@@ -22,11 +22,9 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/, include: __dirname },
-      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
-      { test: /\.(png|jpg|jpeg)$/, loader: 'url-loader?limit=8192', include: __dirname  }
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.(png|jpg|jpeg)$/, loader: 'url-loader?limit=8192', include: __dirname },
+      { test: /\.json$/, loader: 'json', include: __dirname },
     ]
-  },
-  postcss: function () {
-    return [require('precss')];
   }
 }
