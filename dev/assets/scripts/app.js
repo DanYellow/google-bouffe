@@ -98,7 +98,8 @@ const markers = [
     },
     title: `Digitas`,
     icon: require(`./logo-digitas.png`),
-    filtrabled: false
+    filtrabled: false,
+    zIndex: 999999
   }
 
 
