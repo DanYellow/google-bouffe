@@ -11,13 +11,14 @@ import {GoogleMapLoader, GoogleMap, Marker} from "react-google-maps";
 // 
 
 import DetailsRestaurant from './DetailsRestaurant'
+import DetailsDigitas from './DetailsDigitas'
 
 @Radium
 export default class Map extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      currentRestaurant: {}
+      currentMarker: {}
     }
 
   }
@@ -29,17 +30,20 @@ export default class Map extends React.Component {
    * @return {null}
    */
   selectMarker(index, marker) {
-    const currentRestaurant = Object.assign(marker.props, { title: marker.title });
-    if (!currentRestaurant.tags) {
-      currentRestaurant.tags = [];
+    const currentMarker = Object.assign(marker.props, { title: marker.title });
+    if (!currentMarker.tags) {
+      currentMarker.tags = [];
     }
-    this.setState({ currentRestaurant: currentRestaurant });
+    this.setState({ currentMarker: currentMarker });
   }
 
   render() {
     return (
       <section style={styles.container}>
         <Style rules={{
+          html: {
+            color: '#f4f4f4'
+          },
           body: {
             padding: "38px 42px",
             color: '#333333'
@@ -78,7 +82,8 @@ export default class Map extends React.Component {
             </GoogleMap>
           }
         />
-        <DetailsRestaurant restaurant={this.state.currentRestaurant} />
+        <DetailsRestaurant restaurant={this.state.currentMarker} />
+        <DetailsDigitas restaurant={this.state.currentMarker} />
       </section>
     );
   }
