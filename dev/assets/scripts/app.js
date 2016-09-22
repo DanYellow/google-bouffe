@@ -68,7 +68,14 @@ window.tagsRef = {
     title: "Sandwichs",
     description: ""
   },
-
+  '16': {
+    title: "Apéro",
+    description: "Idéal pour un after-work"
+  },
+  '17': {
+    title: "Happy hour",
+    description: "Propose des prix préférentiels sur l'alcool"
+  },
 
 
 
@@ -79,11 +86,11 @@ window.tagsRef = {
     description: ""
   },
   '151': {
-    title: "Unicorns",
+    title: "Paris Bastille",
     description: ""
   },
   '152': {
-    title: "Unicorns",
+    title: "Crossfit - Bad form is the norm",
     description: ""
   },
   '153': {
@@ -231,6 +238,18 @@ const markers = [
     }
   }, {
     position: {
+      lat: 48.8565472,
+      lng: 2.3732662
+    },
+    title: `Fresh Bagel & Juice`,
+    props: {
+      description: '',
+      address: '1 Rue Froment, 75011 Paris',
+      tags: ["3", "1"],
+      budgetScale: 5
+    }
+  }, {
+    position: {
       lat: 48.857511, 
       lng: 2.373364
     },
@@ -238,8 +257,11 @@ const markers = [
     icon: require(`./logo-digitas.png`),
     zIndex: 999999,
     props: {
-      filtrabled: false
-    }
+      filtrabled: false,
+      description: 'Mélange détonant entre une Agence et une agence',
+      address: "30-34 Rue du Chemin Vert, 75011 Paris",
+      tags: ["150", "151", "152", "153", "154", "155"],
+    } 
   }
 ]
 

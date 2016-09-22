@@ -21,6 +21,28 @@ export default class Map extends React.Component {
       currentMarker: {}
     }
 
+    this.mapStyle = [
+      {
+        featureType: "all",
+        stylers: [
+          { saturation: -80 }
+        ]
+      },{
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [
+          { hue: "#ff0000" },
+          { saturation: 50 }
+        ]
+      },{
+        featureType: "poi.business",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+
   }
 
   /**
@@ -38,6 +60,10 @@ export default class Map extends React.Component {
   }
 
   render() {
+    var detailsView = <DetailsRestaurant restaurant={this.state.currentMarker} />
+    if (this.state.currentMarker.title === 'Digitas') {
+      detailsView =  <DetailsDigitas restaurant={this.state.currentMarker} />
+    }
     return (
       <section style={styles.container}>
         <Style rules={{
@@ -45,8 +71,10 @@ export default class Map extends React.Component {
             color: '#f4f4f4'
           },
           body: {
-            padding: "38px 42px",
-            color: '#333333'
+            padding: '38px 42px',
+            color: '#333333',
+            maxWidth: '1300px',
+            margin: '0 auto'
           },
           h1: {
             fontSize: '48px'
@@ -69,6 +97,15 @@ export default class Map extends React.Component {
             <GoogleMap
               defaultZoom={15}
               defaultCenter={this.props.defaultCenter}
+              defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
+              defaultOptions={{
+                        minZoom: 3,
+                          fullscreenControl: false,
+                          streetViewControl: false,
+                          scaleControl: true,
+                          mapTypeControl: false,
+                          styles: this.mapStyle
+                        }}
             >
               {this.props.markers.map((marker, index) => {
                 return (
@@ -82,8 +119,8 @@ export default class Map extends React.Component {
             </GoogleMap>
           }
         />
-        <DetailsRestaurant restaurant={this.state.currentMarker} />
-        <DetailsDigitas restaurant={this.state.currentMarker} />
+        {detailsView}
+       
       </section>
     );
   }
