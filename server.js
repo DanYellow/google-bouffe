@@ -1,7 +1,6 @@
 var webpack              = require('webpack');
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
-var extractTextPlugin    = require('extract-text-webpack-plugin');
 var config               = require('./webpack.config');
 
 var app = new (require('express'))();
