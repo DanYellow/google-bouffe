@@ -13,7 +13,7 @@ import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
 import DetailsRestaurant from './DetailsRestaurant'
 import DetailsDigitas from './DetailsDigitas'
 
-import styles from './../stylesheets/Map.css'
+import styles from './../stylesheets/map.css'
 
 
 export default class Map extends React.Component {
