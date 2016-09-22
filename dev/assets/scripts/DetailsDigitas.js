@@ -2,21 +2,20 @@ import 'babel-polyfill';
 import React from 'react';
 import Radium from 'radium';
 
-import { styles } from './DetailsStyles'
 
-@Radium
+import styles from './../stylesheets/details-view.css'
+
 export default class DetailsDigitas extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    console.log(window.tagsRef)
     var tags = null;
     if (this.props.restaurant.tags.length) {
-      tags = <ul style={styles.tags}>
+      tags = <ul className={styles.tags}>
             {this.props.restaurant.tags.map(function(tag, index) {
-              return <li key={ Date.now() + index } style={styles.tag} title={ window.tagsRef[tag].description }>{ window.tagsRef[tag].title || "Meilleur restaurant ever" }</li>;
+              return <li key={ Date.now() + index } className={styles.tag} title={ window.tagsRef[tag].description }>{ window.tagsRef[tag].title || "Meilleur restaurant ever" }</li>;
           }) }
         </ul>
     }
@@ -27,13 +26,13 @@ export default class DetailsDigitas extends React.Component {
     }
 
     return (
-      <section style={styles.container}>
+      <section className={styles.container}>
         <header>
-          <figure style={styles.figure}><img src={require('../images/simple_logo_digitas.png')} width={105} /></figure>
-          <h1 style={styles.title}>{this.props.restaurant.title}</h1>
-          <p itemProp="streetAddress"><span>Adresse : </span>{this.props.restaurant.address}</p>
+          <figure className={styles.figure}><img src={require('../images/simple_logo_digitas.png')} width={105} /></figure>
+          <h1 className={styles.title}>{this.props.restaurant.title}</h1>
+          <p itemProp="streetAddress" className={styles.address}><span>Adresse : </span>{this.props.restaurant.address}</p>
         </header>
-        <blockquote itemProp="description" style={styles.description}>{ description }</blockquote>
+        <blockquote itemProp="description" className={styles.description}>{ description }</blockquote>
         { tags }
       </section>
     );

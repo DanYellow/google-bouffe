@@ -2,9 +2,8 @@ import 'babel-polyfill';
 import React from 'react';
 import Radium from 'radium';
 
-import { styles } from './DetailsStyles'
+import styles from './../stylesheets/details-view.css'
 
-@Radium
 class BudgetMeter extends React.Component {
   static defaultProps = {
     budgetScale: 5
@@ -22,8 +21,8 @@ class BudgetMeter extends React.Component {
   render() {
     return (
       <div>
-        <h3>Budget</h3>
-        <div style={styles.meterContainer}>
+        <h3 style={{ fontFamily: "'open_sansregular', Arial, sans-serif", marginBottom: "3px" }}>Budget</h3>
+        <div className={styles.meterContainer}>
           <div style={budgetMeterStyle(this.props.budgetScale)}></div>
         </div>
       </div>
@@ -39,7 +38,8 @@ var budgetMeterStyle = function(value) {
     transformOrigin: "left center",
     backgroundColor: meterBGColor(value),
     height: '100%',
-    borderRadius: "3px"
+    borderRadius: "3px",
+    'transition': '.3s all'
   }
 }
 
@@ -60,8 +60,6 @@ const meterBGColor = function (value) {
 }
 
 
-
-@Radium
 export default class DetailsRestaurant extends React.Component {
   constructor(props) {
     super(props);
@@ -78,9 +76,9 @@ export default class DetailsRestaurant extends React.Component {
 
     var tags = null;
     if (this.props.restaurant.tags.length) {
-      tags = <ul style={styles.tags}>
+      tags = <ul className={styles.tags}>
             {this.props.restaurant.tags.map(function(tag, index) {
-              return <li key={ Date.now() + index } style={styles.tag} title={ window.tagsRef[tag].description }>{ window.tagsRef[tag].title || "Meilleur restaurant ever" }</li>;
+              return <li key={ Date.now() + index } className={styles.tag} title={ window.tagsRef[tag].description }>{ window.tagsRef[tag].title || "Meilleur restaurant ever" }</li>;
           }) }
         </ul>
     }
@@ -91,12 +89,12 @@ export default class DetailsRestaurant extends React.Component {
     }
 
     return (
-      <section style={styles.container}>
+      <section className={styles.container}>
         <header>
-          <h1 style={styles.title}>{this.props.restaurant.title}</h1>
-          <p itemProp="streetAddress"><span>Adresse : </span>{this.props.restaurant.address}</p>
+          <h1 className={styles.title}>{this.props.restaurant.title}</h1>
+          <p itemProp="streetAddress" className={styles.address}><span>Adresse : </span>{this.props.restaurant.address}</p>
         </header>
-        <blockquote itemProp="description" style={styles.description}>{ description }</blockquote>
+        <blockquote itemProp="description" className={styles.description}>{ description }</blockquote>
         { tags }
         <BudgetMeter budgetScale={this.props.restaurant.budgetScale} />
       </section>

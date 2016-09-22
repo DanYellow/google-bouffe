@@ -1,0 +1,13 @@
+/* @import './reset.css'; */
+
+.map {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 500px;
+  padding: 15px;
+  margin: 0 auto;
+  padding: 10px 0;
+  border-top: 2px solid #da032c;
+  border-bottom: 2px solid #da032c;
+}

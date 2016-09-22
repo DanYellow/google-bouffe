@@ -3,9 +3,12 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 
+// import './../stylesheets/reset.css'
+require('./../stylesheets/reset.css');
+require('./../stylesheets/base.css');
+
 import Map from './map'
 
-import './../stylesheets/reset.css'
 
 window.tagsRef = {
   '1': {
@@ -94,7 +97,7 @@ window.tagsRef = {
     description: ""
   },
   '153': {
-    title: "Unicorns",
+    title: "#Pas d'escaliers",
     description: ""
   },
   '154': {
@@ -250,8 +253,51 @@ const markers = [
     }
   }, {
     position: {
-      lat: 48.857511, 
-      lng: 2.373364
+      lat: 48.85608,
+      lng: 2.370976
+    },
+    title: `New Hanoï`,
+    props: {
+      description: 'Très bon, petite salle, l\'attente y est nulle entre 12h et 12h30',
+      address: '25 Rue Saint-Sabin, 75011 Paris',
+      tags: ["7", "1"],
+      budgetScale: 5
+    }
+  }, {
+    position: {
+      lat: 48.8566843,
+      lng: 2.373068
+    },
+    title: `La Robe de la girafe`,
+    props: {
+      description: '',
+      address: '5 Rue Froment, 75011 Paris',
+      tags: ["16"],
+      budgetScale: 5
+    }
+  }, {
+    position: {
+      lat: 48.8551897,
+      lng: 2.374018999
+    },
+    title: `Café Divan`,
+    props: {
+      description: '',
+      address: '60 rue de la Roquette',
+      tags: [],
+      budgetScale: 5
+    }
+  }, 
+
+
+
+
+
+
+  {
+    position: {
+      lat: 48.857927,
+      lng: 2.373118
     },
     title: `Digitas`,
     icon: require(`./logo-digitas.png`),

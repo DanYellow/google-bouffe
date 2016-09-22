@@ -1,10 +1,10 @@
 import 'babel-polyfill';
 import React from 'react';
-import Radium, { Style } from 'radium';
+import Radium, { className } from 'radium';
 
 
 
-import {GoogleMapLoader, GoogleMap, Marker} from "react-google-maps";
+import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
 // import InfoBox from "react-google-maps/lib/addons/InfoBox";
 
 // https://github.com/tomchentw/react-google-maps
@@ -13,36 +13,43 @@ import {GoogleMapLoader, GoogleMap, Marker} from "react-google-maps";
 import DetailsRestaurant from './DetailsRestaurant'
 import DetailsDigitas from './DetailsDigitas'
 
-@Radium
+import styles from './../stylesheets/Map.css'
+
+
 export default class Map extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       currentMarker: {}
     }
+  }
 
-    this.mapStyle = [
-      {
-        featureType: "all",
-        stylers: [
-          { saturation: -80 }
-        ]
-      },{
-        featureType: "road.arterial",
-        elementType: "geometry",
-        stylers: [
-          { hue: "#ff0000" },
-          { saturation: 50 }
-        ]
-      },{
-        featureType: "poi.business",
-        elementType: "labels",
-        stylers: [
-          { visibility: "off" }
-        ]
-      }
-    ];
-
+  static mapOptions = {
+    minZoom: 10,
+    fullscreenControl: false,
+    streetViewControl: false,
+    scaleControl: true,
+    mapTypeControl: false,
+    styles: [{
+      featureType: "all",
+      stylers: [
+        { saturation: -80 }
+      ]
+    },{
+      featureType: "road.arterial",
+      elementType: "geometry",
+      stylers: [
+        { hue: "#ff0000" },
+        { saturation: 50 }
+      ]
+    },{
+      featureType: "poi.business",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }],
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   }
 
   /**
@@ -65,24 +72,8 @@ export default class Map extends React.Component {
       detailsView =  <DetailsDigitas restaurant={this.state.currentMarker} />
     }
     return (
-      <section style={styles.container}>
-        <Style rules={{
-          html: {
-            color: '#f4f4f4'
-          },
-          body: {
-            padding: '38px 42px',
-            color: '#333333',
-            maxWidth: '1300px',
-            margin: '0 auto'
-          },
-          h1: {
-            fontSize: '48px'
-          },
-          header: {
-            marginBottom: '15px'
-          }
-        }} />
+      <section className={styles.map}>
+        
 
         <GoogleMapLoader
           containerElement={
@@ -93,20 +84,28 @@ export default class Map extends React.Component {
               }}
             />
           }
+          ref="map"
           googleMapElement={
             <GoogleMap
+              
               defaultZoom={15}
               defaultCenter={this.props.defaultCenter}
               defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
-              defaultOptions={{
-                        minZoom: 3,
-                          fullscreenControl: false,
-                          streetViewControl: false,
-                          scaleControl: true,
-                          mapTypeControl: false,
-                          styles: this.mapStyle
-                        }}
+              defaultOptions={this.mapOptions}
             >
+              <Polygon options={{
+        paths: [
+        {lat: 48.858081, lng: 2.372110},
+        {lat: 48.857274, lng: 2.372843},
+        {lat: 48.857711, lng: 2.373974},
+        {lat: 48.858491, lng: 2.373130}
+      ],
+        strokeColor: '#FFFFFF',
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35
+      }}  />
               {this.props.markers.map((marker, index) => {
                 return (
                   <Marker
@@ -123,20 +122,5 @@ export default class Map extends React.Component {
        
       </section>
     );
-  }
-}
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    height: '500px',
-    padding: '15px',
-    maxWidth: '1300px',
-    margin: '0 auto',
-    padding: '10px 0',
-    borderTop: '2px solid #da032c',
-    borderBottom: '2px solid #da032c',
   }
 }
