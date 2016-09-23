@@ -3,7 +3,6 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 
-// import './../stylesheets/reset.css'
 require('./../stylesheets/reset.css');
 require('./../stylesheets/base.css');
 
@@ -69,7 +68,7 @@ window.tagsRef = {
   },
   '15': {
     title: "Sandwichs",
-    description: ""
+    description: "Le classique"
   },
   '16': {
     title: "Apéro",
@@ -78,6 +77,10 @@ window.tagsRef = {
   '17': {
     title: "Happy hour",
     description: "Propose des prix préférentiels sur l'alcool"
+  },
+  '18': {
+    title: "Pas de CB",
+    description: "Le restaurateur ne propose pas le paiement par Carte Bleue"
   },
 
 
@@ -94,7 +97,7 @@ window.tagsRef = {
   },
   '152': {
     title: "Crossfit - Bad form is the norm",
-    description: ""
+    description: "ZEEEEEEEEEEEERO !"
   },
   '153': {
     title: "#Pas d'escaliers",
@@ -154,7 +157,7 @@ const markers = [
     },
     title: `Chez Gladines`,
     props: {
-      description: 'Restauration du typique du Sud de la France. Plats copieux pour des prix raisonnable',
+      description: 'Restauration du typique du Sud de la France. Plats copieux pour des prix raisonnables',
       address: '64 Rue de Charonne, 75011 Paris',
       tags: ["8", "5"],
       budgetScale: 3
@@ -287,7 +290,31 @@ const markers = [
       tags: [],
       budgetScale: 5
     }
-  }, 
+  }, {
+    position: {
+      lat: 48.855505, 
+      lng: 2.374143
+    },
+    title: `Blue Elephant`,
+    props: {
+      description: '',
+      address: '45 Rue de la Roquette, 75011 Paris',
+      tags: ["8", 7],
+      budgetScale: 10
+    }
+  }, {
+    position: {
+      lat: 48.855004, 
+      lng: 2.374733
+    },
+    title: `Wok Cooking`,
+    props: {
+      description: 'Ingrédients, épices et sauces à choisir soi-même pour des plats asiatiques cuits au wok dans un lieu sobre.',
+      address: '25 Rue des Taillandiers, 75011 Paris',
+      tags: ["8", 7],
+      budgetScale: 4
+    }
+  },
 
 
 
