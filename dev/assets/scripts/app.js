@@ -104,7 +104,7 @@ window.tagsRef = {
     description: "...NO GAINS !"
   },
   '154': {
-    title: "Unicorns",
+    title: "Licornets",
     description: ""
   },
   '155': {
@@ -133,7 +133,7 @@ const markers = [
     },
     title: `Chez Aline`,
     props: {
-      description: 'Traiteur / Sandwicherie.',
+      description: 'Traiteur / Sandwicherie. Tortilla de patatas, ex.ce.llen.te',
       address: '85 Rue de la Roquette, 75011 Paris',
       tags: [1, 8, 9, 15],
       budgetScale: 8
@@ -145,9 +145,9 @@ const markers = [
     },
     title: `Starvin Joe`,
     props: {
-      description: 'Burger',
+      description: 'Burger. Est-il nécessaire d\'en dire plus ?',
       address: '42 Rue de Charonne, 75011 Paris',
-      tags: ["12", "3", "5"],
+      tags: [12, 3, 5],
       budgetScale: 5
     }
   }, {
@@ -159,7 +159,7 @@ const markers = [
     props: {
       description: 'Restauration du typique du Sud de la France. Plats copieux pour des prix raisonnables',
       address: '64 Rue de Charonne, 75011 Paris',
-      tags: ["8", "5"],
+      tags: [8, 5],
       budgetScale: 3
     }
   }, {
@@ -182,7 +182,7 @@ const markers = [
     props: {
       description: '',
       address: '20 Rue Daval, 75011 Paris',
-      tags: ["7"],
+      tags: [7],
       budgetScale: 5
     }
   }, {
@@ -216,7 +216,7 @@ const markers = [
     props: {
       description: 'Buffet à volonté sur place',
       address: '18 Rue Daval, 75011 Paris',
-      tags: ["7"],
+      tags: [7],
       budgetScale: 5
     }
   }, {
@@ -239,7 +239,7 @@ const markers = [
     props: {
       description: 'Sandwiches à la mode tropicale : les bokits',
       address: '12 Rue de Lappe, 75011 Paris',
-      tags: ["3", "4", "1"],
+      tags: [3, 4, 1],
       budgetScale: 5
     }
   }, {
@@ -251,7 +251,7 @@ const markers = [
     props: {
       description: '',
       address: '1 Rue Froment, 75011 Paris',
-      tags: ["3", "1"],
+      tags: [3, 1],
       budgetScale: 5
     }
   }, {
@@ -263,7 +263,7 @@ const markers = [
     props: {
       description: 'Très bon, petite salle, l\'attente y est nulle entre 12h et 12h30',
       address: '25 Rue Saint-Sabin, 75011 Paris',
-      tags: ["7", "1"],
+      tags: [7, 1],
       budgetScale: 5
     }
   }, {
@@ -275,7 +275,7 @@ const markers = [
     props: {
       description: '',
       address: '5 Rue Froment, 75011 Paris',
-      tags: ["16"],
+      tags: [16],
       budgetScale: 5
     }
   }, {
@@ -299,7 +299,7 @@ const markers = [
     props: {
       description: '',
       address: '45 Rue de la Roquette, 75011 Paris',
-      tags: ["8", 7],
+      tags: [8, 7],
       budgetScale: 10
     }
   }, {
@@ -311,7 +311,7 @@ const markers = [
     props: {
       description: 'Ingrédients, épices et sauces à choisir soi-même pour des plats asiatiques cuits au wok dans un lieu sobre.',
       address: '25 Rue des Taillandiers, 75011 Paris',
-      tags: ["8", 7],
+      tags: [8, 7],
       budgetScale: 4
     }
   },
@@ -326,8 +326,8 @@ const markers = [
     props: {
       filtrabled: false,
       description: 'Mélange détonant entre une Agence et une agence',
-      address: "30-34 Rue du Chemin Vert, 75011 Paris",
-      tags: ["150", "151", "152", "153", "154", "155"],
+      address: '30-34 Rue du Chemin Vert, 75011 Paris',
+      tags: [150, 151, 152, 153, 154, 155],
     } 
   }
 ]

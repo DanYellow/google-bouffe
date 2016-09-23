@@ -1,6 +1,5 @@
 import 'babel-polyfill';
 import React from 'react';
-import Radium from 'radium';
 
 import styles from './../stylesheets/details-view.css'
 

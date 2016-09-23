@@ -1,6 +1,5 @@
 import 'babel-polyfill';
 import React from 'react';
-import Radium, { className } from 'radium';
 
 import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
 
@@ -23,34 +22,35 @@ export default class Map extends React.Component {
       currentMarker: currentMarker,
       displayMode: 'map'
     }
+
+    this.mapOptions = {
+      minZoom: 13,
+      fullscreenControl: false,
+      streetViewControl: false,
+      scaleControl: true,
+      clickableIcons: false,
+      styles: [{
+        featureType: "all",
+        stylers: [
+          { saturation: -80 }
+        ]
+      }, {
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [
+          { hue: "#ff0000" },
+          { saturation: 50 }
+        ]
+      }, {
+        featureType: "poi.business",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }]
+    }
   }
 
-  static mapOptions = {
-    minZoom: 10,
-    fullscreenControl: false,
-    streetViewControl: false,
-    scaleControl: false,
-    styles: [{
-      featureType: "all",
-      stylers: [
-        { saturation: -80 }
-      ]
-    }, {
-      featureType: "road.arterial",
-      elementType: "geometry",
-      stylers: [
-        { hue: "#ff0000" },
-        { saturation: 50 }
-      ]
-    }, {
-      featureType: "poi.business",
-      elementType: "labels",
-      stylers: [
-        { visibility: "off" }
-      ]
-    }],
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
 
   /**
    * Action when a marker is selected
@@ -64,6 +64,10 @@ export default class Map extends React.Component {
       currentMarker.tags = [];
     }
     this.setState({ currentMarker: currentMarker });
+
+    if (this.state.displayMode === "list") {
+      this.refs.map.state.map.setCenter(new google.maps.LatLng(marker.position.lat, marker.position.lng));
+    }
   }
 
   /**
@@ -100,6 +104,8 @@ export default class Map extends React.Component {
                 defaultCenter={this.props.defaultCenter}
                 defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
                 defaultOptions={this.mapOptions}
+
+                ref={(ref) => this.map = ref}
               >
                 <Polygon options={{
                     paths: [

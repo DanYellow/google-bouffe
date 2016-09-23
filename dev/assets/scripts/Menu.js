@@ -1,7 +1,5 @@
 import 'babel-polyfill';
 import React from 'react';
-import Radium from 'radium';
-
 
 import styles from './../stylesheets/menu.css'
 
@@ -33,7 +31,8 @@ export default class Menu extends React.Component {
 const active = function (currentType, thisType) {
   if (currentType === thisType) {
     return {
-      borderBottom: '3px solid #da032c'
+      borderBottom: '3px solid #da032c',
+      color: '#da032c'
     }
   }
 }
