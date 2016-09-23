@@ -9,3 +9,11 @@
   border-top: 2px solid #da032c;
   border-bottom: 2px solid #da032c;
 }
+
+.hide {
+  flex: 0;
+}
+
+.googlemap {
+  flex: 1;
+}

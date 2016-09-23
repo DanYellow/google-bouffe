@@ -2,17 +2,12 @@ import 'babel-polyfill';
 import React from 'react';
 import Radium, { className } from 'radium';
 
-
-
 import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
-// import InfoBox from "react-google-maps/lib/addons/InfoBox";
-
-// https://github.com/tomchentw/react-google-maps
-// 
 
 import DetailsRestaurant from './DetailsRestaurant'
 import DetailsDigitas from './DetailsDigitas'
 import Menu from './Menu'
+import ListRestaurants from './ListRestaurants'
 
 import styles from './../stylesheets/map.css'
 
@@ -21,7 +16,8 @@ export default class Map extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      currentMarker: {}
+      currentMarker: {},
+      displayMode: 'map'
     }
   }
 
@@ -31,19 +27,20 @@ export default class Map extends React.Component {
     streetViewControl: false,
     scaleControl: true,
     mapTypeControl: false,
+    clickableIcons: false,
     styles: [{
       featureType: "all",
       stylers: [
         { saturation: -80 }
       ]
-    },{
+    }, {
       featureType: "road.arterial",
       elementType: "geometry",
       stylers: [
         { hue: "#ff0000" },
         { saturation: 50 }
       ]
-    },{
+    }, {
       featureType: "poi.business",
       elementType: "labels",
       stylers: [
@@ -72,7 +69,7 @@ export default class Map extends React.Component {
    * @param {[type]} mode [description]
    */
   setDisplayMode (mode) {
-    alert(mode)
+    this.setState({ displayMode: mode });
   }
 
   render() {
@@ -80,41 +77,42 @@ export default class Map extends React.Component {
     if (this.state.currentMarker.title === 'Digitas') {
       detailsView =  <DetailsDigitas restaurant={this.state.currentMarker} />
     }
+
+    const extraClass = this.state.displayMode == 'map' ? null : 'hide';
+    console.log(styles[extraClass], extraClass)
+
     return (
       <section className={styles.map}>
-        <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column' }}>
-          <Menu callbackClick={this.setDisplayMode} />
+        <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
+          <Menu callbackClick={this.setDisplayMode.bind(this)} />
+
+          <ListRestaurants restaurants={this.props.markers} selectedRestaurantCallback={this.selectMarker.bind(this)} displayMode={this.state.displayMode} />
+
           <GoogleMapLoader
             containerElement={
-              <div
-                style={{
-                  height: "100%",
-                  flex: 1,
-                }}
-              />
+              <div style={{ flex: 1, }}  />
             }
             ref="map"
             googleMapElement={
-              <GoogleMap
-                
+              <GoogleMap  
                 defaultZoom={15}
                 defaultCenter={this.props.defaultCenter}
                 defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
                 defaultOptions={this.mapOptions}
               >
                 <Polygon options={{
-          paths: [
-          {lat: 48.858081, lng: 2.372110},
-          {lat: 48.857274, lng: 2.372843},
-          {lat: 48.857711, lng: 2.373974},
-          {lat: 48.858491, lng: 2.373130}
-        ],
-          strokeColor: '#FFFFFF',
-          strokeOpacity: 0.8,
-          strokeWeight: 1,
-          fillColor: '#FF0000',
-          fillOpacity: 0.35
-        }}  />
+                    paths: [
+                    {lat: 48.858081, lng: 2.372110},
+                    {lat: 48.857274, lng: 2.372843},
+                    {lat: 48.857711, lng: 2.373974},
+                    {lat: 48.858491, lng: 2.373130}
+                  ],
+                    strokeColor: '#FFFFFF',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 1,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35
+                  }}  />
                 {this.props.markers.map((marker, index) => {
                   return (
                     <Marker

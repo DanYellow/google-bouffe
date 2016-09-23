@@ -1,0 +1,19 @@
+.list {
+  overflow-y: scroll;
+  flex: 0;
+}
+
+.list.show {
+  flex: 1000;
+}
+
+.list li {
+  height: 42px;
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 5px
+}
+
+.list button {
+  flex: 1;
+}

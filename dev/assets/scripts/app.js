@@ -101,7 +101,7 @@ window.tagsRef = {
   },
   '153': {
     title: "#Pas d'escaliers",
-    description: ""
+    description: "...NO GAINS !"
   },
   '154': {
     title: "Unicorns",
@@ -133,9 +133,9 @@ const markers = [
     },
     title: `Chez Aline`,
     props: {
-      description: 'Traiteur / Sandicherie.',
+      description: 'Traiteur / Sandwicherie.',
       address: '85 Rue de la Roquette, 75011 Paris',
-      tags: ["1", "8", "9"],
+      tags: [1, 8, 9, 15],
       budgetScale: 8
     }
   }, {

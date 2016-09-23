@@ -4,8 +4,10 @@
   flex-wrap: wrap;
   margin-bottom: 15px;
   align-items: center;
+
 }
 
-.menu li, .menu button {
-	flex: .5;
+.menu button {
+  flex: .5;
+  appearance: none;
 }
