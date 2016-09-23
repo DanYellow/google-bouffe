@@ -92,7 +92,7 @@ export default class DetailsRestaurant extends React.Component {
       <section className={styles.container}>
         <header>
           <h1 className={styles.title}>{this.props.restaurant.title}</h1>
-          <p itemProp="streetAddress" className={styles.address}><span>Adresse : </span>{this.props.restaurant.address}</p>
+          <p itemProp="streetAddress" className={styles.address}><span style={{ fontFamily: "'open_sanssemibold', Arial, sans-serif" }}>Adresse : </span>{this.props.restaurant.address}</p>
         </header>
         <blockquote itemProp="description" className={styles.description}>{ description }</blockquote>
         { tags }
