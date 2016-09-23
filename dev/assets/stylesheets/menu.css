@@ -2,12 +2,20 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   align-items: center;
 
 }
 
 .menu button {
   flex: .5;
-  appearance: none;
+
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  padding-bottom: 7px;
+
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  font-size: 16px;
+  color: #333333;
 }

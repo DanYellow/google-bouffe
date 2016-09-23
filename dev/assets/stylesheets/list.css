@@ -11,9 +11,21 @@
   height: 42px;
   display: flex;
   align-items: stretch;
-  margin-bottom: 5px
+  margin-bottom: 5px;
 }
 
 .list button {
   flex: 1;
+
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  text-align: left;
+
+  font-family: 'open_sansregular', Arial, sans-serif;
+  font-size: 14px;
+}
+
+.list button:hover {
+  background-color: #e7e7e7;
 }

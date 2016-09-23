@@ -315,12 +315,6 @@ const markers = [
       budgetScale: 4
     }
   },
-
-
-
-
-
-
   {
     position: {
       lat: 48.857927,

@@ -14,7 +14,6 @@ class BudgetMeter extends React.Component {
   }
 
   constructor(props) {
-
     super(props);
   }
 
@@ -70,10 +69,6 @@ export default class DetailsRestaurant extends React.Component {
   }
 
   render() {
-    if (typeof this.props.restaurant.budgetScale === "undefined") {
-      return null;
-    }
-
     var tags = null;
     if (this.props.restaurant.tags.length) {
       tags = <ul className={styles.tags}>

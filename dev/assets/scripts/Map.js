@@ -15,8 +15,12 @@ import styles from './../stylesheets/map.css'
 export default class Map extends React.Component {
   constructor (props) {
     super(props);
+
+    const digitasMarker = this.props.markers.find(function(marker) { return marker.title === 'Digitas'});
+    const currentMarker = Object.assign(digitasMarker.props, { title: digitasMarker.title });
+
     this.state = {
-      currentMarker: {},
+      currentMarker: currentMarker,
       displayMode: 'map'
     }
   }
@@ -25,9 +29,7 @@ export default class Map extends React.Component {
     minZoom: 10,
     fullscreenControl: false,
     streetViewControl: false,
-    scaleControl: true,
-    mapTypeControl: false,
-    clickableIcons: false,
+    scaleControl: false,
     styles: [{
       featureType: "all",
       stylers: [
@@ -79,14 +81,13 @@ export default class Map extends React.Component {
     }
 
     const extraClass = this.state.displayMode == 'map' ? null : 'hide';
-    console.log(styles[extraClass], extraClass)
 
     return (
       <section className={styles.map}>
         <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <Menu callbackClick={this.setDisplayMode.bind(this)} />
+          <Menu callbackClick={this.setDisplayMode.bind(this)} displayMode={this.state.displayMode} />
 
-          <ListRestaurants restaurants={this.props.markers} selectedRestaurantCallback={this.selectMarker.bind(this)} displayMode={this.state.displayMode} />
+          <ListRestaurants currentRestaurant={this.state.currentMarker} restaurants={this.props.markers} selectedRestaurantCallback={this.selectMarker.bind(this)} displayMode={this.state.displayMode} />
 
           <GoogleMapLoader
             containerElement={

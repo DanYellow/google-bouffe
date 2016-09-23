@@ -20,7 +20,7 @@ export default class ListRestaurants extends React.Component {
     return ( 
       <ul className={[styles.list, styles[extraClass]].join(' ')}> 
         {this.props.restaurants.map((restaurant, index) => {
-            return <ListRestaurantsItem {...restaurant} key={ Date.now() + index } selectedRestaurantCallback={this.selectedRestaurant.bind(this)} />
+            return <ListRestaurantsItem currentRestaurant={this.props.currentRestaurant} {...restaurant} key={ Date.now() + index } selectedRestaurantCallback={this.selectedRestaurant.bind(this)} />
           })}
       </ul>
     )
@@ -47,7 +47,7 @@ class ListRestaurantsItem extends React.Component {
 
   render() {
     return ( 
-      <li>
+      <li style={active(this.props.currentRestaurant.title, this.props.title)}>
         <button onClick={() => this.selectedRestaurant()}>
           {this.props.title}
         </button>
@@ -56,3 +56,10 @@ class ListRestaurantsItem extends React.Component {
   }
 }
 
+const active = function (currentType, thisType) {
+  if (currentType === thisType) {
+    return {
+      borderLeft: '3px solid #da032c'
+    }
+  }
+}
