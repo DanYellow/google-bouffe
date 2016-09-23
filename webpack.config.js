@@ -11,7 +11,7 @@ module.exports = {
     './dev/assets/scripts/app.js',
   ],
   output: {
-    path: path.join(__dirname, './'),
+    path: path.join(__dirname, './public'),
     filename: 'app.js',
     publicPath: '/assets/scripts/'
   },
