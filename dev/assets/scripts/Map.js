@@ -15,7 +15,7 @@ export default class Map extends React.Component {
   constructor (props) {
     super(props);
 
-    const digitasMarker = this.props.markers.find(function(marker) { return marker.title === 'Digitas'});
+    const digitasMarker = this.props.markers.find(function(marker) { return marker.title.indexOf('Digitas') > -1 });
     const currentMarker = Object.assign(digitasMarker.props, { title: digitasMarker.title });
 
     this.state = {
@@ -29,6 +29,10 @@ export default class Map extends React.Component {
       streetViewControl: false,
       scaleControl: true,
       clickableIcons: false,
+      mapTypeControl: false,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE
+      },
       styles: [{
         featureType: "all",
         stylers: [

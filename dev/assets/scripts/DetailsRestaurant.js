@@ -8,6 +8,7 @@ class BudgetMeter extends React.Component {
     budgetScale: 5
   }
 
+  // We type our props
   static propTypes = {
     budgetScale: React.PropTypes.number
   }

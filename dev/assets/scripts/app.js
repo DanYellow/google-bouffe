@@ -20,7 +20,7 @@ window.tagsRef = {
   },
   '3': {
     title: "Végétarien",
-    description: "Pas de viandes, pas de poisson"
+    description: "Propose des plats sans viande, sans poisson"
   },
   '4': {
     title: "C'est la fin du mois",
@@ -32,7 +32,7 @@ window.tagsRef = {
   },
   '6': {
     title: "Vegan / Végétalien",
-    description: "Propose des repas sans viandes, poissons, oeufs, fromages, produit exploitantn les animaux"
+    description: "Propose des repas sans viandes, poissons, oeufs, fromages. Aucun produit issu de l'exploitation animale"
   },
   '7': {
     title: "Asiatique",
@@ -76,14 +76,12 @@ window.tagsRef = {
   },
   '17': {
     title: "Happy hour",
-    description: "Propose des prix préférentiels sur l'alcool"
+    description: "Propose des prix préférentiels sur l'alcool durant une période"
   },
   '18': {
     title: "Pas de CB",
     description: "Le restaurateur ne propose pas le paiement par Carte Bleue"
   },
-
-
 
 
 
@@ -112,225 +110,26 @@ window.tagsRef = {
     description: ""
   }
 }
+ 
+const markers = require("json!./restaurants-list.json");
 
-const markers = [
-  {
-    position: {
-      lat: 48.850861,
-      lng: 2.377926,
+markers.push({
+    "position": {
+      "lat": 48.857927,
+      "lng": 2.373118
     },
-    title: `East mamma`,
-    props: {
-      description: 'Restaurant Italien. Produits de qualité pour des plats de qualité',
-      address: '33 Rue du Faubourg Saint-Antoine, 75011 Paris',
-      tags: ["8", "13", "5"],
-      budgetScale: 4
-    }
-  }, {
-    position: {
-      lat: 48.857127,
-      lng: 2.378408
-    },
-    title: `Chez Aline`,
-    props: {
-      description: 'Traiteur / Sandwicherie. Tortilla de patatas, ex.ce.llen.te',
-      address: '85 Rue de la Roquette, 75011 Paris',
-      tags: [1, 8, 9, 15],
-      budgetScale: 8
-    }
-  }, {
-    position: {
-      lat: 48.853131,
-      lng: 2.376798
-    },
-    title: `Starvin Joe`,
-    props: {
-      description: 'Burger. Est-il nécessaire d\'en dire plus ?',
-      address: '42 Rue de Charonne, 75011 Paris',
-      tags: [12, 3, 5],
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.853272,
-      lng: 2.379049
-    },
-    title: `Chez Gladines`,
-    props: {
-      description: 'Restauration du typique du Sud de la France. Plats copieux pour des prix raisonnables',
-      address: '64 Rue de Charonne, 75011 Paris',
-      tags: [8, 5],
-      budgetScale: 3
-    }
-  }, {
-    position: {
-      lat: 48.8568045,
-      lng: 2.3779875
-    },
-    title: `La fée verte`,
-    props: {
-      description: '',
-      address: '108 rue de la Roquette, 75011 Paris',
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.8544782,
-      lng: 2.3711407
-    },
-    title: `Momji`,
-    props: {
-      description: '',
-      address: '20 Rue Daval, 75011 Paris',
-      tags: [7],
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.8544782,
-      lng: 2.3711407
-    },
-    title: `Café des anges`,
-    props: {
-      description: '',
-      address: '66 Rue de la Roquette, 75011 Paris',
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.8572733,
-      lng: 2.3732052
-    },
-    title: `La Marelle`,
-    props: {
-      description: '',
-      address: '20 Rue Breguet, 75011 Paris',
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.854488,
-      lng: 2.37082
-    },
-    title: `Jun'Sushi`,
-    props: {
-      description: 'Buffet à volonté sur place',
-      address: '18 Rue Daval, 75011 Paris',
-      tags: [7],
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.853097,
-      lng: 2.378275
-    },
-    title: `Le Chalet Savoyard`,
-    props: {
-      description: 'Raclette Suisse',
-      address: '58 Rue de Charonne, 75011 Paris',
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.853663,
-      lng: 2.372831
-    },
-    title: `L'île aux Bokits`,
-    props: {
-      description: 'Sandwiches à la mode tropicale : les bokits',
-      address: '12 Rue de Lappe, 75011 Paris',
-      tags: [3, 4, 1],
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.8565472,
-      lng: 2.3732662
-    },
-    title: `Fresh Bagel & Juice`,
-    props: {
-      description: '',
-      address: '1 Rue Froment, 75011 Paris',
-      tags: [3, 1],
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.85608,
-      lng: 2.370976
-    },
-    title: `New Hanoï`,
-    props: {
-      description: 'Très bon, petite salle, l\'attente y est nulle entre 12h et 12h30',
-      address: '25 Rue Saint-Sabin, 75011 Paris',
-      tags: [7, 1],
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.8566843,
-      lng: 2.373068
-    },
-    title: `La Robe de la girafe`,
-    props: {
-      description: '',
-      address: '5 Rue Froment, 75011 Paris',
-      tags: [16],
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.8551897,
-      lng: 2.374018999
-    },
-    title: `Café Divan`,
-    props: {
-      description: '',
-      address: '60 rue de la Roquette',
-      tags: [],
-      budgetScale: 5
-    }
-  }, {
-    position: {
-      lat: 48.855505, 
-      lng: 2.374143
-    },
-    title: `Blue Elephant`,
-    props: {
-      description: '',
-      address: '45 Rue de la Roquette, 75011 Paris',
-      tags: [8, 7],
-      budgetScale: 10
-    }
-  }, {
-    position: {
-      lat: 48.855004, 
-      lng: 2.374733
-    },
-    title: `Wok Cooking`,
-    props: {
-      description: 'Ingrédients, épices et sauces à choisir soi-même pour des plats asiatiques cuits au wok dans un lieu sobre.',
-      address: '25 Rue des Taillandiers, 75011 Paris',
-      tags: [8, 7],
-      budgetScale: 4
-    }
-  },
-  {
-    position: {
-      lat: 48.857927,
-      lng: 2.373118
-    },
-    title: `Digitas`,
-    icon: require(`./logo-digitas.png`),
+    "title": "DigitasLBi",
+    icon: require("./logo-digitas.png"),
     zIndex: 999999,
-    props: {
+    "props": {
       filtrabled: false,
-      description: 'Mélange détonant entre une Agence et une agence',
-      address: '30-34 Rue du Chemin Vert, 75011 Paris',
-      tags: [150, 151, 152, 153, 154, 155],
+      "description": "Mélange détonant entre __placeholder1__ et __placeholder2__",
+      "original_description": "Mélange détonant entre __placeholder1__ et __placeholder2__",
+      "address": "30-34 Rue du Chemin Vert, 75011 Paris",
+      "tags": [150, 151, 152, 153, 154, 155],
     } 
   }
-]
+);
 
 
 render(

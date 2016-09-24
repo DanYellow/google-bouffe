@@ -18,4 +18,5 @@
   font-family: 'open_sanssemibold', Arial, sans-serif;
   font-size: 16px;
   color: #333333;
+  border-bottom: 3px solid transparent;
 }

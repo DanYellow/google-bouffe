@@ -1,29 +1,29 @@
 .container {
-  height: 100%;
   flex: 0.35;
-  padding: 0 5px 5px 15px;
-  border-left: 1px solid #da032c;
   margin-left: 10px;
+  padding: 0 5px 5px 15px;
+  height: 100%;
+  border-left: 1px solid #da032c;
 }
 
 .title {
-  font-family: 'open_sanssemibold', Arial, sans-serif;
-  font-size: 26px;
   color: #333333;
+  font-size: 26px;
+  font-family: 'open_sanssemibold', Arial, sans-serif;
 }
 
 .address {
-  font-family: 'open_sansregular', Arial, sans-serif;
-  font-size: 14px;
   color: #333333;
+  font-size: 14px;
+  font-family: 'open_sansregular', Arial, sans-serif;
 }
 
 .description {
-  font-family: Georgia, serif;
-  font-size: 18px;
   margin: 30px 0;
-  font-style: italic;
   color: #da032c;
+  font-style: italic;
+  font-size: 18px;
+  font-family: Georgia, serif;
 }
   
 
@@ -36,27 +36,61 @@
 }
 
 .tag {
-  font-size: 14px;
-  color: #00b21f;
-  text-transform: uppercase;
-  border-left: 1px solid #00b21f;
+  margin-right: 18px;
+  margin-bottom: 10px;
   padding-left: 5px;
   min-width: 100px;
-  margin-bottom: 10px;
-  margin-right: 18px;
+  border-left: 1px solid #00b21f;
+  color: #00b21f;
+  text-transform: uppercase;
+  font-size: 14px;
   font-family: 'open_sanslight', serif;
 }
 
 .meterContainer {
   width: 100%;
-  background-color: #dcdcdc;
   height: 9px;
   border-radius: 3px;
+  background-color: #dcdcdc;
 }
 
-.figure {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+
+.flip-container {
+  perspective: 1000px;
+}
+
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 105px;
+  height: 105px;
+}
+
+.flipper {
+  position: relative;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+}
+
+.front, .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+
+.clip-svg {
+  clip-path: url(#myClip);
 }

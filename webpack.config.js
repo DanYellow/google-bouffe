@@ -25,9 +25,10 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/, include: __dirname },
       { test: /\.(png|jpg|jpeg|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=8192', include: __dirname },
-      { test: /\.json$/, loader: 'json', include: __dirname },
+      { test: /\.json$/, loader: 'json!json-loader', include: __dirname },
       { test: /\.css$/, 
-        loader: 'style-loader!css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]'
+        loader: 'style-loader!css-loader',
+        query: { localIdentName: '[name]__[local]___[hash:base64:5]', modules: true }
       }
     ]
   }

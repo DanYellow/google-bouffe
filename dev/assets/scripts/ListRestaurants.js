@@ -33,12 +33,15 @@ ListRestaurants.propTypes = {
   restaurants: React.PropTypes.array
 }
 
-
 class ListRestaurantsItem extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  /**
+   * Indicates which restaurant have been selected
+   * @return null
+   */
   selectedRestaurant() {
     this.props.selectedRestaurantCallback(this.props);
   }
