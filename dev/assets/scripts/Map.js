@@ -84,7 +84,7 @@ export default class Map extends React.Component {
 
   render() {
     var detailsView = <DetailsRestaurant restaurant={this.state.currentMarker} />
-    if (this.state.currentMarker.title === 'Digitas') {
+    if (this.state.currentMarker.title.indexOf('Digitas') > -1) {
       detailsView =  <DetailsDigitas restaurant={this.state.currentMarker} />
     }
 

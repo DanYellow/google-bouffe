@@ -12,16 +12,22 @@ export default class DetailsDigitas extends React.Component {
       'du numérique', 'du digital',
       'de la direction par de la donnée utilisateur', 'du kimchi',
       'un gif audio', 'une image sonore',
-    ]
+    ];
 
     this.flipGifs = [
       'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
       'https://media.giphy.com/media/3osxYamKD88c6pXdfO/giphy.gif',
       'https://media.giphy.com/media/CzQ9Kl1UIt8hG/giphy.gif',
       'https://media.giphy.com/media/xT8qB436gZpXdBw304/giphy.gif',
-    ]
+    ];
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    console.log(nextProps.restaurant.title !== this.props.restaurant.title)
+    return nextProps.restaurant.title !== this.props.restaurant.title;
+  }
+
+  // Everytime the component is mounted, we change Digitas' description
   componentWillMount() {
     this.props.restaurant.description = this.props.restaurant.original_description.replace("__placeholder1__", this.randomWords[Math.floor(Math.random() * this.randomWords.length)]).replace("__placeholder2__", this.randomWords[Math.floor(Math.random() * this.randomWords.length)]); 
   }
@@ -51,23 +57,18 @@ export default class DetailsDigitas extends React.Component {
           </defs>
         </svg>
         <header>
-           {/* <figure className={styles.figure}><img src={require('../images/simple_logo_digitas.png')} width={105} /></figure> */ }
-
-           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }} >
-           <div className={styles["flip-container"]} >
-            <div className={styles["flipper"]}>
-              <div className={styles["front"]}>
-                <img src={require('../images/simple_logo_digitas.png')} width={105} />
-              </div>
-              <div className={styles["back"]}>
-                <img src={this.flipGifs[Math.floor(Math.random() * this.flipGifs.length)]} className={styles['clip-svg']} width={105} />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }} >
+            <div className={styles["flip-container"]} >
+              <div className={styles["flipper"]}>
+                <div className={styles["front"]}>
+                  <img src={require('../images/simple_logo_digitas.png')} width={105} />
+                </div>
+                <div className={styles["back"]}>
+                  <img src={this.flipGifs[Math.floor(Math.random() * this.flipGifs.length)]} className={styles['clip-svg']} height={105} />
+                </div>
               </div>
             </div>
           </div>
-          </div>
-
-
-
 
           <h1 className={styles.title}>{this.props.restaurant.title}</h1>
           <p itemProp="streetAddress" className={styles.address}><span style={{ fontFamily: "'open_sanssemibold', Arial, sans-serif" }}>Adresse : </span>{this.props.restaurant.address}</p>

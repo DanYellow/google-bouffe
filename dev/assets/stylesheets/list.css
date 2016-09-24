@@ -29,3 +29,8 @@
 .list button:hover {
   background-color: #e7e7e7;
 }
+
+
+.list button:focus {
+  border-left: 3px solid #da8998;
+}

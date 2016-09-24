@@ -68,6 +68,10 @@ export default class DetailsRestaurant extends React.Component {
     }
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    return nextProps.restaurant.title !== this.props.restaurant.title;
+  }
+
   render() {
     var tags = null;
     if (this.props.restaurant.tags.length) {

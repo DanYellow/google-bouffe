@@ -41,12 +41,13 @@
     },
     "title": "Starvin Joe",
     "props": {
-      "description": "Burger. Est-il nécessaire d'en dire plus ?",
+      "description": "Mar1 y est déjà allé genre trois fois.",
       "address": "42 Rue de Charonne, 75011 Paris",
       "tags": [
         12,
         3,
-        5
+        5,
+        14
       ],
       "budgetScale": 5
     }

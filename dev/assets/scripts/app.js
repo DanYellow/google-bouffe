@@ -64,7 +64,7 @@ window.tagsRef = {
   },
   '14': {
     title: "Cheat meal",
-    description: "La nourriture n'est pas très diététique"
+    description: "La nourriture n'est pas très diététique. Mais c'est bon petit plaisir, alors c'est pardonné"
   },
   '15': {
     title: "Sandwichs",
