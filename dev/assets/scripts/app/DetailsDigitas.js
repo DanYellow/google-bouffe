@@ -36,7 +36,7 @@ export default class DetailsDigitas extends React.Component {
     if (this.props.restaurant.tags.length) {
       tags = <ul className={styles.tags}>
             {this.props.restaurant.tags.map(function(tag, index) {
-              return <li key={ Date.now() + index } className={styles.tag} title={ window.tagsRef[tag].description }>{ window.tagsRef[tag].title || "Meilleur restaurant ever" }</li>;
+              return <li key={ Date.now() + index } className={[styles.tag, styles.rainbow].join(' ')} title={ window.tagsRef[tag].description }>{ window.tagsRef[tag].title || "Meilleur restaurant ever" }</li>;
           }) }
         </ul>
     }
