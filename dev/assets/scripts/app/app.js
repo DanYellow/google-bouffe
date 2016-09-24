@@ -7,9 +7,6 @@ import Menu from './Menu'
 import ListRestaurants from './ListRestaurants'
 import Map from './Map'
 
-
-
-
 import Utils from './Utils'
 
 import styles from './../../stylesheets/map.css'
@@ -165,12 +162,11 @@ export default class App extends React.Component {
     if (!currentRestaurant.tags) {
       currentRestaurant.tags = [];
     }
-    
+
     return (
       <section className={styles.map}>
         <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <Menu />
-          
+          <Menu routeParams={this.props.params} />
           {ViewDisplay}
         </div>
 

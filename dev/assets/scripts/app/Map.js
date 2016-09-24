@@ -65,7 +65,6 @@ export default class Map extends React.Component {
       <GoogleMapLoader
         containerElement={
           <div
-
             style={{
               flex: 1,
             }}

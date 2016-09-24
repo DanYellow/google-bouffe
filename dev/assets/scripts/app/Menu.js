@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 
-import { Link } from 'react-router'
+import { Link, withRouter } from 'react-router';
 
 import styles from './../../stylesheets/menu.css'
 
@@ -11,20 +11,18 @@ const ACTIVE = {
   color: '#da032c'
 }
 
+@withRouter
 export default class Menu extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  setDisplayMode (type) {
-    this.props.callbackClick(type)
-  }
-
   render() {
+    console.log(this.props)
     return (  
       <nav className={styles.menu}>
-        <Link to="map" activeStyle={ACTIVE}>Carte</Link>
-        <Link to="list" activeStyle={ACTIVE}>Liste</Link>
+        <Link to={"map/" + this.props.routeParams["slug"]} activeStyle={ACTIVE}>Carte</Link>
+        <Link to={"list/" + this.props.routeParams["slug"]} activeStyle={ACTIVE}>Liste</Link>
       </nav>
     )
   }
