@@ -7,14 +7,14 @@ export default class DetailsDigitas extends React.Component {
   constructor(props) {
     super(props);
 
-    this.randomWords = [
+    this.RANDOMWORDS = [
       'une Agence', 'une agence',
       'du numérique', 'du digital',
       'de la direction par de la donnée utilisateur', 'du kimchi',
       'un gif audio', 'une image sonore',
     ];
 
-    this.flipGifs = [
+    this.FLIPGIFS = [
       'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
       'https://media.giphy.com/media/3osxYamKD88c6pXdfO/giphy.gif',
       'https://media.giphy.com/media/CzQ9Kl1UIt8hG/giphy.gif',
@@ -28,7 +28,7 @@ export default class DetailsDigitas extends React.Component {
 
   // Everytime the component is mounted, we change Digitas' description
   componentWillMount() {
-    this.props.restaurant.description = this.props.restaurant.original_description.replace("__placeholder1__", this.randomWords[Math.floor(Math.random() * this.randomWords.length)]).replace("__placeholder2__", this.randomWords[Math.floor(Math.random() * this.randomWords.length)]); 
+    this.props.restaurant.description = this.props.restaurant.original_description.replace("__placeholder1__", this.RANDOMWORDS[Math.floor(Math.random() * this.RANDOMWORDS.length)]).replace("__placeholder2__", this.RANDOMWORDS[Math.floor(Math.random() * this.RANDOMWORDS.length)]); 
   }
 
   render() {
@@ -63,7 +63,7 @@ export default class DetailsDigitas extends React.Component {
                   <img src={require('../../images/simple_logo_digitas.png')} width={105} />
                 </div>
                 <div className={styles["back"]}>
-                  <img src={this.flipGifs[Math.floor(Math.random() * this.flipGifs.length)]} className={styles['clip-svg']} height={105} />
+                  <img src={this.FLIPGIFS[Math.floor(Math.random() * this.FLIPGIFS.length)]} className={styles['clip-svg']} height={105} />
                 </div>
               </div>
             </div>

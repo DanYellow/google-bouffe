@@ -11,18 +11,18 @@ const ACTIVE = {
   color: '#da032c'
 }
 
-@withRouter
 export default class Menu extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    console.log(this.props)
-    return (  
+    let slugURL = (Object.getOwnPropertyNames(this.props.routeParams).length > 0) ? this.props.routeParams["slug"] : "digitaslbi";
+    
+    return (
       <nav className={styles.menu}>
-        <Link to={"map/" + this.props.routeParams["slug"]} activeStyle={ACTIVE}>Carte</Link>
-        <Link to={"list/" + this.props.routeParams["slug"]} activeStyle={ACTIVE}>Liste</Link>
+        <Link target="_self" to={"map/" + slugURL} activeStyle={ACTIVE}>Carte</Link>
+        <Link target="_self" to={"list/" + slugURL} activeStyle={ACTIVE}>Liste</Link>
       </nav>
     )
   }

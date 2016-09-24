@@ -87,14 +87,13 @@ window.tagsRef = {
   },
 
 
-
   '150': {
     title: "Unicorns",
     description: ""
   },
   '151': {
     title: "Paris Bastille",
-    description: ""
+    description: "Bastille Paris"
   },
   '152': {
     title: "Crossfit - Bad form is the norm",
@@ -106,7 +105,7 @@ window.tagsRef = {
   },
   '154': {
     title: "Licornets",
-    description: ""
+    description: "Quand est-ce qu'ils reviennent ?"
   },
   '155': {
     title: "Unicorns",
@@ -157,6 +156,7 @@ export default class App extends React.Component {
     let currentRestaurant = {};
     
     let slug = this.props.params.slug || 'digitaslbi';
+    
     currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, slug));
     currentRestaurant = Object.assign(currentRestaurant.props, { title: currentRestaurant.title });
     if (!currentRestaurant.tags) {
@@ -166,7 +166,7 @@ export default class App extends React.Component {
     return (
       <section className={styles.map}>
         <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <Menu routeParams={this.props.params} />
+          <Menu routeParams={this.props.params || 'digitaslbi'} />
           {ViewDisplay}
         </div>
 
