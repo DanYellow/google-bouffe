@@ -13,10 +13,6 @@ class BudgetMeter extends React.Component {
     budgetScale: React.PropTypes.number
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

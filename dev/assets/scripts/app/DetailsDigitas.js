@@ -3,6 +3,8 @@ import React from 'react';
 
 import styles from './../../stylesheets/details-view.css'
 
+import TextGenerator from './TextGenerator'
+
 export default class DetailsDigitas extends React.Component {
   constructor(props) {
     super(props);
@@ -20,30 +22,39 @@ export default class DetailsDigitas extends React.Component {
       'https://media.giphy.com/media/CzQ9Kl1UIt8hG/giphy.gif',
       'https://media.giphy.com/media/xT8qB436gZpXdBw304/giphy.gif',
     ];
-  }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    return nextProps.restaurant.title !== this.props.restaurant.title;
+    this.state = {
+      description: this.getRandomDescription()
+    }
   }
 
   // Everytime the component is mounted, we change Digitas' description
   componentWillMount() {
-    this.props.restaurant.description = this.props.restaurant.original_description.replace("__placeholder1__", this.RANDOMWORDS[Math.floor(Math.random() * this.RANDOMWORDS.length)]).replace("__placeholder2__", this.RANDOMWORDS[Math.floor(Math.random() * this.RANDOMWORDS.length)]); 
+    this.randomDescription();
+  }
+
+  randomDescription () {
+    this.setState({description: this.getRandomDescription() })
+  }
+
+  getRandomDescription () {
+    return this.props.restaurant.original_description.replace("__placeholder1__", this.RANDOMWORDS[Math.floor(Math.random() * this.RANDOMWORDS.length)]).replace("__placeholder2__", this.RANDOMWORDS[Math.floor(Math.random() * this.RANDOMWORDS.length)]); 
   }
 
   render() {
     var tags = null;
     if (this.props.restaurant.tags.length) {
-      tags = <ul className={styles.tags}>
+      tags = 
+        <ul className={styles.tags}>
             {this.props.restaurant.tags.map(function(tag, index) {
               return <li key={ Date.now() + index } className={[styles.tag, styles.rainbow].join(' ')} title={ window.tagsRef[tag].description }>{ window.tagsRef[tag].title || "Meilleur restaurant ever" }</li>;
           }) }
         </ul>
     }
 
-    var description = "";
-    if (this.props.restaurant.description) {
-      description = `‘‘${this.props.restaurant.description}’’`
+    var description = this.state.description;
+    if (description) {
+      description = `‘‘${description}’’`
     }
 
     return (
@@ -72,8 +83,9 @@ export default class DetailsDigitas extends React.Component {
           <h1 className={styles.title}>{this.props.restaurant.title}</h1>
           <p itemProp="streetAddress" className={styles.address}><span style={{ fontFamily: "'open_sanssemibold', Arial, sans-serif" }}>Adresse : </span>{this.props.restaurant.address}</p>
         </header>
-        <blockquote itemProp="description" className={styles.description}>{ description }</blockquote>
+        <blockquote onClick={() => this.randomDescription()} itemProp="description" className={styles.description}>{ description }</blockquote>
         { tags }
+
       </section>
     );
   }
