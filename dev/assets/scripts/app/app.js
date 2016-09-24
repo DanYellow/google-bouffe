@@ -1,16 +1,14 @@
 import 'babel-polyfill';
 import React from 'react';
 
-// import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
 
-import DetailsRestaurant from './DetailsRestaurant'
-// import DetailsDigitas from './DetailsDigitas'
-// import Menu from './Menu'
-// import ListRestaurants from './ListRestaurants'
 import Header from './Header'
 import Menu from './Menu'
 import ListRestaurants from './ListRestaurants'
 import Map from './Map'
+
+
+
 
 import Utils from './Utils'
 
@@ -140,11 +138,11 @@ markers.push({
 );
 
 markers.map(function(marker) {
-  return marker.slug = Utils.slugify(marker.title)
+  return marker.props.slug = Utils.slugify(marker.title)
 });
 
 const getRestaurantForSlug = function (slug, restaurant) {
-  return restaurant.slug === slug;
+  return restaurant.props.slug === slug;
 }
 
 export default class App extends React.Component {
@@ -173,7 +171,7 @@ export default class App extends React.Component {
         <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
           <Menu />
           
-          <Map markers={this.props.restaurants} />
+          {ViewDisplay}
         </div>
 
         {this.props.children && React.cloneElement(this.props.children, { restaurant: currentRestaurant })}

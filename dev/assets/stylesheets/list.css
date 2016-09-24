@@ -1,10 +1,6 @@
 .list {
   overflow-y: scroll;
-  flex: 0;
-}
-
-.list.show {
-  flex: 1000;
+  flex: 1;
 }
 
 .list li {

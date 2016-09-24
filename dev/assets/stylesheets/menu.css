@@ -12,14 +12,14 @@
   background: transparent;
   border-radius: 0;
   border: none;
-  padding-bottom: 7px;
+  padding: 7px 0;
 
   font-family: 'open_sanssemibold', Arial, sans-serif;
   font-size: 16px;
   color: #333333;
   border-bottom: 3px solid transparent;
   text-align: center;
-  text-decoration: none
+  text-decoration: none;
 }
 
 .menu button:focus, .menu a:focus {

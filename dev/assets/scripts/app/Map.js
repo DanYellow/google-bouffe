@@ -2,20 +2,14 @@ import 'babel-polyfill';
 import React from 'react';
 
 import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
+import { Link, withRouter } from 'react-router';
 
-import styles from './../../stylesheets/map.css'
+import styles from './../../stylesheets/map.css';
 
-
+@withRouter
 export default class Map extends React.Component {
   constructor (props) {
     super(props);
-
-    // const digitasMarker = this.props.markers.find(function(marker) { return marker.title.indexOf('Digitas') > -1 });
-    // const currentMarker = Object.assign(digitasMarker.props, { title: digitasMarker.title });
-
-    // this.state = {
-    //   currentMarker: currentMarker
-    // }
 
     this.mapOptions = {
       minZoom: 13,
@@ -24,6 +18,8 @@ export default class Map extends React.Component {
       scaleControl: true,
       clickableIcons: false,
       mapTypeControl: false,
+
+
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE
       },
@@ -50,7 +46,8 @@ export default class Map extends React.Component {
   }
 
   static defaultProps = {
-    markers: []
+    markers: [],
+    defaultCenter: {lat: 48.857511, lng: 2.373364}
   }
 
   /**
@@ -60,58 +57,51 @@ export default class Map extends React.Component {
    * @return {null}
    */
   selectMarker(index, marker) {
-    // const currentMarker = Object.assign(marker.props, { title: marker.title });
-    // if (!currentMarker.tags) {
-    //   currentMarker.tags = [];
-    // }
-    // this.setState({ currentMarker: currentMarker });
+    this.props.router.push(`/map/${marker.props.slug}`)
   }
 
-
-
   render() {
-    console.log(this.props)
     return (
-          <GoogleMapLoader
-            containerElement={
-              <div style={{ height: "1000px", }}  />
-            }
-            ref="map"
-            googleMapElement={
-              <GoogleMap  
-                defaultZoom={15}
-                defaultCenter={this.props.defaultCenter}
-                defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
-                defaultOptions={this.mapOptions}
+      <GoogleMapLoader
+        containerElement={
+          <div
 
-                ref={(ref) => this.map = ref}
-              >
-                <Polygon options={{
-                    paths: [
-                    {lat: 48.858081, lng: 2.372110},
-                    {lat: 48.857274, lng: 2.372843},
-                    {lat: 48.857711, lng: 2.373974},
-                    {lat: 48.858491, lng: 2.373130}
-                  ],
-                    strokeColor: '#FFFFFF',
-                    strokeOpacity: 0.8,
-                    strokeWeight: 1,
-                    fillColor: '#FF0000',
-                    fillOpacity: 0.35
-                  }}  />
-                {this.props.markers.map((marker, index) => {
-                  return (
-                    <Marker
-                      {...marker}
-                      key={index}
-                      onClick={this.selectMarker.bind(this, index, marker)}
-                    />
-                  );
-                })}
-              </GoogleMap>
-            }
+            style={{
+              flex: 1,
+            }}
           />
+        }
+        googleMapElement={
+          <GoogleMap
+            defaultZoom={15}
+            defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+            defaultCenter={this.props.defaultCenter}
+            defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
+            defaultOptions={this.mapOptions}
+          >
 
+          <Polygon options={{
+            paths: [{lat: 48.858081, lng: 2.372110}, {lat: 48.857274, lng: 2.372843},
+            {lat: 48.857711, lng: 2.373974}, {lat: 48.858491, lng: 2.373130}],
+            strokeColor: '#FFFFFF',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35
+          }} />
+
+          {this.props.markers.map((marker, index) => {
+            return (
+              <Marker
+                {...marker}
+                key={index}
+                onClick={this.selectMarker.bind(this, index, marker)}
+              />
+            );
+          })}
+          </GoogleMap>
+        }
+      />
     );
   }
 }
