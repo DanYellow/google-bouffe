@@ -20,8 +20,10 @@ export default class Map extends React.Component {
 
     this.state = {
       currentMarker: currentMarker,
-      displayMode: 'map'
+      displayMode: this.props.displayMode
     }
+
+    console.log(this.state.displayMode)
 
     this.mapOptions = {
       minZoom: 13,

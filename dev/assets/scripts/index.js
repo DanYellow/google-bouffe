@@ -3,6 +3,8 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 
+import { Router, Route, Link, browserHistory } from 'react-router'
+
 require('./../stylesheets/reset.css');
 require('./../stylesheets/base.css');
 
@@ -133,6 +135,9 @@ markers.push({
 
 
 render(
-  <Map markers={markers} defaultCenter={{ lat: 48.857511, lng: 2.373364 }} />,
+  <Router history={browserHistory}>
+    <Route path="/" component={() => (<Map markers={markers} displayMode='map' defaultCenter={{ lat: 48.857511, lng: 2.373364 }} />)} />
+    <Route path="list" component={() => (<Map markers={markers} displayMode='list' defaultCenter={{ lat: 48.857511, lng: 2.373364 }} />)} />
+  </Router>,
   document.getElementById('root')
 )
