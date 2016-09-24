@@ -56,7 +56,7 @@ export default class DetailsDigitas extends React.Component {
     if (description) {
       description = `‘‘${description}’’`
     }
-
+    console.log(<TextGenerator />)
     return (
       <section className={styles.container}>
         <svg width="0" height="0">
@@ -85,7 +85,7 @@ export default class DetailsDigitas extends React.Component {
         </header>
         <blockquote onClick={() => this.randomDescription()} itemProp="description" className={styles.description}>{ description }</blockquote>
         { tags }
-
+                <p><TextGenerator /></p>
       </section>
     );
   }
