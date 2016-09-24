@@ -1,14 +1,20 @@
-import 'babel-polyfill'
+import 'babel-polyfill';
+import React from 'react';
 
-import React from 'react'
-import { render } from 'react-dom'
+// import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
 
-import { Router, Route, Link, browserHistory } from 'react-router'
+import DetailsRestaurant from './DetailsRestaurant'
+// import DetailsDigitas from './DetailsDigitas'
+// import Menu from './Menu'
+// import ListRestaurants from './ListRestaurants'
+import Header from './Header'
+import Menu from './Menu'
+import ListRestaurants from './ListRestaurants'
+import Map from './Map'
 
-require('./../stylesheets/reset.css');
-require('./../stylesheets/base.css');
+import Utils from './Utils'
 
-import Map from './map'
+import styles from './../../stylesheets/map.css'
 
 
 window.tagsRef = {
@@ -113,7 +119,7 @@ window.tagsRef = {
   }
 }
  
-const markers = require("json!./restaurants-list.json");
+const markers = require("json!./../../datas/restaurants-list.json");
 
 markers.push({
     "position": {
@@ -121,7 +127,7 @@ markers.push({
       "lng": 2.373118
     },
     "title": "DigitasLBi",
-    icon: require("./logo-digitas.png"),
+    icon: require("./../../images/logo-digitas.png"),
     zIndex: 999999,
     "props": {
       filtrabled: false,
@@ -133,11 +139,46 @@ markers.push({
   }
 );
 
+markers.map(function(marker) {
+  return marker.slug = Utils.slugify(marker.title)
+});
 
-render(
-  <Router history={browserHistory}>
-    <Route path="/" component={() => (<Map markers={markers} displayMode='map' defaultCenter={{ lat: 48.857511, lng: 2.373364 }} />)} />
-    <Route path="list" component={() => (<Map markers={markers} displayMode='list' defaultCenter={{ lat: 48.857511, lng: 2.373364 }} />)} />
-  </Router>,
-  document.getElementById('root')
-)
+const getRestaurantForSlug = function (slug, restaurant) {
+  return restaurant.slug === slug;
+}
+
+export default class App extends React.Component {
+  static defaultProps = {
+    restaurants: markers
+  }
+
+  render() {
+    let ViewDisplay = <ListRestaurants restaurants={this.props.restaurants} />
+
+    if (this.props.route.path === 'map') {
+      ViewDisplay = <Map markers={this.props.restaurants} />
+    }
+
+    let currentRestaurant = {};
+    
+    let slug = this.props.params.slug || 'digitaslbi';
+    currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, slug));
+    currentRestaurant = Object.assign(currentRestaurant.props, { title: currentRestaurant.title });
+    if (!currentRestaurant.tags) {
+      currentRestaurant.tags = [];
+    }
+    
+    return (
+      <section className={styles.map}>
+        <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
+          <Menu />
+          
+          <Map markers={this.props.restaurants} />
+        </div>
+
+        {this.props.children && React.cloneElement(this.props.children, { restaurant: currentRestaurant })}
+
+      </section>
+    );
+  }
+}

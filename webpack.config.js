@@ -10,11 +10,11 @@ module.exports = {
   },
   entry: [
     'webpack-hot-middleware/client',
-    './dev/assets/scripts/app.js',
+    './dev/assets/scripts/index.js',
   ],
   output: {
     path: path.join(__dirname, './public'),
-    filename: 'app.js',
+    filename: 'index.js',
     publicPath: '/assets/scripts/'
   },
   plugins: [

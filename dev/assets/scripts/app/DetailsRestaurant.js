@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 
-import styles from './../stylesheets/details-view.css'
+import styles from './../../stylesheets/details-view.css'
 
 class BudgetMeter extends React.Component {
   static defaultProps = {

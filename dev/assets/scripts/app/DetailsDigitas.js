@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 
-import styles from './../stylesheets/details-view.css'
+import styles from './../../stylesheets/details-view.css'
 
 export default class DetailsDigitas extends React.Component {
   constructor(props) {
@@ -23,7 +23,6 @@ export default class DetailsDigitas extends React.Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    console.log(nextProps.restaurant.title !== this.props.restaurant.title)
     return nextProps.restaurant.title !== this.props.restaurant.title;
   }
 
@@ -61,7 +60,7 @@ export default class DetailsDigitas extends React.Component {
             <div className={styles["flip-container"]} >
               <div className={styles["flipper"]}>
                 <div className={styles["front"]}>
-                  <img src={require('../images/simple_logo_digitas.png')} width={105} />
+                  <img src={require('../../images/simple_logo_digitas.png')} width={105} />
                 </div>
                 <div className={styles["back"]}>
                   <img src={this.flipGifs[Math.floor(Math.random() * this.flipGifs.length)]} className={styles['clip-svg']} height={105} />

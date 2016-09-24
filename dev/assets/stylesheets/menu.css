@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.menu button {
+.menu button, .menu a {
   flex: .5;
 
   background: transparent;
@@ -18,8 +18,10 @@
   font-size: 16px;
   color: #333333;
   border-bottom: 3px solid transparent;
+  text-align: center;
+  text-decoration: none
 }
 
-.menu button:focus {
+.menu button:focus, .menu a:focus {
   border-bottom: 3px solid #da8998;
 }

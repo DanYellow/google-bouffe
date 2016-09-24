@@ -1,15 +1,19 @@
 import 'babel-polyfill';
 import React from 'react';
 
-import styles from './../stylesheets/menu.css'
+import { Link } from 'react-router'
+
+import styles from './../../stylesheets/menu.css'
+
+
+const ACTIVE = {
+  borderBottom: '3px solid #da032c',
+  color: '#da032c'
+}
 
 export default class Menu extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      displayMode: 'map'
-    }
   }
 
   setDisplayMode (type) {
@@ -17,22 +21,11 @@ export default class Menu extends React.Component {
   }
 
   render() {
-    const extraClass = this.props.displayMode == 'map' ? null : 'hide';
-
-    return ( 
+    return (  
       <nav className={styles.menu}>
-        <button style={active(this.props.displayMode, 'map')} onClick={this.setDisplayMode.bind(this, 'map')} >Carte</button>
-        <button style={active(this.props.displayMode, 'list')} onClick={this.setDisplayMode.bind(this, 'list')} >Liste</button>
+        <Link to="map" activeStyle={ACTIVE}>Carte</Link>
+        <Link to="list" activeStyle={ACTIVE}>Liste</Link>
       </nav>
     )
-  }
-}
-
-const active = function (currentType, thisType) {
-  if (currentType === thisType) {
-    return {
-      borderBottom: '3px solid #da032c',
-      color: '#da032c'
-    }
   }
 }

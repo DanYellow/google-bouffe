@@ -6,7 +6,7 @@
     },
     "title": "East mamma",
     "props": {
-      "description": "Restaurant Italien. Produits de qualité pour des plats de qualité",
+      "description": "Restaurant Italien. Produits de qualité pour des plats de qualité.",
       "address": "33 Rue du Faubourg Saint-Antoine, 75011 Paris",
       "tags": [
         "8",
@@ -23,7 +23,7 @@
     },
     "title": "Chez Aline",
     "props": {
-      "description": "Traiteur / Sandwicherie. Tortilla de patatas, ex.ce.llen.te",
+      "description": "Traiteur / Sandwicherie. Tortilla de patatas, ex.ce.llen.te.",
       "address": "85 Rue de la Roquette, 75011 Paris",
       "tags": [
         1,
@@ -41,7 +41,7 @@
     },
     "title": "Starvin Joe",
     "props": {
-      "description": "Mar1 y est déjà allé genre trois fois.",
+      "description": "Mar1 y est déjà allé genre trois fois. C'est un bon burger.",
       "address": "42 Rue de Charonne, 75011 Paris",
       "tags": [
         12,
@@ -59,7 +59,7 @@
     },
     "title": "Chez Gladines",
     "props": {
-      "description": "Restauration du typique du Sud de la France. Plats copieux pour des prix raisonnables",
+      "description": "Restauration du typique du Sud de la France. Plats copieux pour des prix raisonnables.",
       "address": "64 Rue de Charonne, 75011 Paris",
       "tags": [
         8,
@@ -126,7 +126,7 @@
     },
     "title": "Jun'Sushi",
     "props": {
-      "description": "Buffet à volonté sur place",
+      "description": "Buffet à volonté sur place.",
       "address": "18 Rue Daval, 75011 Paris",
       "tags": [
         7
@@ -141,7 +141,7 @@
     },
     "title": "Le Chalet Savoyard",
     "props": {
-      "description": "Raclette Suisse",
+      "description": "Raclette Suisse.",
       "address": "58 Rue de Charonne, 75011 Paris",
       "budgetScale": 5
     }
@@ -153,7 +153,7 @@
     },
     "title": "L'île aux Bokits",
     "props": {
-      "description": "Sandwiches à la mode tropicale : les bokits",
+      "description": "Sandwiches à la mode Guadeloupéenne : les bokits.",
       "address": "12 Rue de Lappe, 75011 Paris",
       "tags": [
         3,

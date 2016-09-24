@@ -3,27 +3,19 @@ import React from 'react';
 
 import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
 
-import DetailsRestaurant from './DetailsRestaurant'
-import DetailsDigitas from './DetailsDigitas'
-import Menu from './Menu'
-import ListRestaurants from './ListRestaurants'
-
-import styles from './../stylesheets/map.css'
+import styles from './../../stylesheets/map.css'
 
 
 export default class Map extends React.Component {
   constructor (props) {
     super(props);
 
-    const digitasMarker = this.props.markers.find(function(marker) { return marker.title.indexOf('Digitas') > -1 });
-    const currentMarker = Object.assign(digitasMarker.props, { title: digitasMarker.title });
+    // const digitasMarker = this.props.markers.find(function(marker) { return marker.title.indexOf('Digitas') > -1 });
+    // const currentMarker = Object.assign(digitasMarker.props, { title: digitasMarker.title });
 
-    this.state = {
-      currentMarker: currentMarker,
-      displayMode: this.props.displayMode
-    }
-
-    console.log(this.state.displayMode)
+    // this.state = {
+    //   currentMarker: currentMarker
+    // }
 
     this.mapOptions = {
       minZoom: 13,
@@ -57,6 +49,9 @@ export default class Map extends React.Component {
     }
   }
 
+  static defaultProps = {
+    markers: []
+  }
 
   /**
    * Action when a marker is selected
@@ -65,43 +60,21 @@ export default class Map extends React.Component {
    * @return {null}
    */
   selectMarker(index, marker) {
-    const currentMarker = Object.assign(marker.props, { title: marker.title });
-    if (!currentMarker.tags) {
-      currentMarker.tags = [];
-    }
-    this.setState({ currentMarker: currentMarker });
-
-    if (this.state.displayMode === "list") {
-      this.refs.map.state.map.setCenter(new google.maps.LatLng(marker.position.lat, marker.position.lng));
-    }
+    // const currentMarker = Object.assign(marker.props, { title: marker.title });
+    // if (!currentMarker.tags) {
+    //   currentMarker.tags = [];
+    // }
+    // this.setState({ currentMarker: currentMarker });
   }
 
-  /**
-   * Allow switch map to list
-   * @param {[type]} mode [description]
-   */
-  setDisplayMode (mode) {
-    this.setState({ displayMode: mode });
-  }
+
 
   render() {
-    var detailsView = <DetailsRestaurant restaurant={this.state.currentMarker} />
-    if (this.state.currentMarker.title.indexOf('Digitas') > -1) {
-      detailsView =  <DetailsDigitas restaurant={this.state.currentMarker} />
-    }
-
-    const extraClass = this.state.displayMode == 'map' ? null : 'hide';
-
+    console.log(this.props)
     return (
-      <section className={styles.map}>
-        <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <Menu callbackClick={this.setDisplayMode.bind(this)} displayMode={this.state.displayMode} />
-
-          <ListRestaurants currentRestaurant={this.state.currentMarker} restaurants={this.props.markers} selectedRestaurantCallback={this.selectMarker.bind(this)} displayMode={this.state.displayMode} />
-
           <GoogleMapLoader
             containerElement={
-              <div style={{ flex: 1, }}  />
+              <div style={{ height: "1000px", }}  />
             }
             ref="map"
             googleMapElement={
@@ -138,10 +111,7 @@ export default class Map extends React.Component {
               </GoogleMap>
             }
           />
-        </div>
-        {detailsView}
-       
-      </section>
+
     );
   }
 }

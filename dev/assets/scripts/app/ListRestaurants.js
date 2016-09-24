@@ -1,7 +1,8 @@
 import 'babel-polyfill';
 import React from 'react';
+import { Link } from 'react-router'
 
-import styles from './../stylesheets/list.css'
+import styles from './../../stylesheets/list.css'
 
 export default class ListRestaurants extends React.Component {
   constructor(props) {
@@ -33,6 +34,11 @@ ListRestaurants.propTypes = {
   restaurants: React.PropTypes.array
 }
 
+
+const ACTIVE = {
+  borderLeft: '3px solid #da032c'
+}
+
 class ListRestaurantsItem extends React.Component {
   constructor(props) {
     super(props);
@@ -48,19 +54,11 @@ class ListRestaurantsItem extends React.Component {
 
   render() {
     return ( 
-      <li style={active(this.props.currentRestaurant.title, this.props.title)}>
-        <button onClick={() => this.selectedRestaurant()}>
-          {this.props.title}
-        </button>
+      <li>
+        <Link to={'/list/' + this.props.slug} activeStyle={ACTIVE}>
+          <span>{this.props.title}</span>
+        </Link>
       </li>
     )
-  }
-}
-
-const active = function (currentType, thisType) {
-  if (currentType === thisType) {
-    return {
-      borderLeft: '3px solid #da032c'
-    }
   }
 }

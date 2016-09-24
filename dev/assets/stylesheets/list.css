@@ -14,7 +14,7 @@
   margin-bottom: 5px;
 }
 
-.list button {
+.list button, .list a {
   flex: 1;
 
   background: transparent;
@@ -24,13 +24,20 @@
 
   font-family: 'open_sansregular', Arial, sans-serif;
   font-size: 14px;
+
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: 10px;
+  color: #333;
+  text-decoration: none;
 }
 
-.list button:hover {
+.list button:hover, .list a:hover {
   background-color: #e7e7e7;
 }
 
 
-.list button:focus {
+.list button:focus, .list a:focus {
   border-left: 3px solid #da8998;
 }
