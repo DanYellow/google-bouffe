@@ -10,8 +10,7 @@ require('./../stylesheets/base.css');
 
 import AppWrapper from './app/AppWrapper'
 import App from './app/App'
-import DetailsDigitas from './app/DetailsDigitas'
-import DetailsRestaurant from './app/DetailsRestaurant'
+import DetailsView from './app/DetailsView'
 
 // https://medium.com/@dabit3/beginner-s-guide-to-react-router-53094349669#.kix0vbulz
 // https://github.com/ReactTraining/react-router/issues/1857
@@ -27,14 +26,12 @@ render(
     <Route path='/' component={AppWrapper}>
       <IndexRedirect to="list" />
       <Route path='map' component={(props) => (<App {...props} />)}>
-        <IndexRoute component={DetailsDigitas} />
-        <Route path='digitaslbi' component={DetailsDigitas} />
-        <Route path=':slug' component={DetailsRestaurant} />
+        <IndexRoute component={DetailsView} />
+        <Route path=':slug' component={DetailsView} />
       </Route>
       <Route path='list' component={(props) => (<App {...props}/>)}>
-        <IndexRoute component={DetailsDigitas} />
-        <Route path='digitaslbi' component={DetailsDigitas} />
-        <Route path=':slug' component={DetailsRestaurant} />
+        <IndexRoute component={DetailsView} />
+        <Route path=':slug' component={DetailsView} />
       </Route>
       <Route path='*' component={NotFound}/>
     </Route>

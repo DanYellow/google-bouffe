@@ -141,6 +141,7 @@ const getRestaurantForSlug = function (slug, restaurant) {
   return restaurant.props.slug === slug;
 }
 
+
 export default class App extends React.Component {
   static defaultProps = {
     restaurants: markers
@@ -156,8 +157,13 @@ export default class App extends React.Component {
     let currentRestaurant = {};
     
     let slug = this.props.params.slug || 'digitaslbi';
-    
+    let noResult = false;
     currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, slug));
+    if (!currentRestaurant) {
+      currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, 'digitaslbi'));
+      noResult = true;
+    }
+
     currentRestaurant = Object.assign(currentRestaurant.props, { title: currentRestaurant.title });
     if (!currentRestaurant.tags) {
       currentRestaurant.tags = [];
@@ -166,11 +172,11 @@ export default class App extends React.Component {
     return (
       <section className={styles.map}>
         <div style={{ height: '100%', flex: .65, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <Menu routeParams={this.props.params || 'digitaslbi'} />
+          <Menu routeParams={this.props.params} />
           {ViewDisplay}
         </div>
 
-        {this.props.children && React.cloneElement(this.props.children, { restaurant: currentRestaurant })}
+        {this.props.children && React.cloneElement(this.props.children, { restaurant: currentRestaurant, noResult: noResult })}
 
       </section>
     );

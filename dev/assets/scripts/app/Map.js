@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 
 import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
-import { Link, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 
 import styles from './../../stylesheets/map.css';
 
