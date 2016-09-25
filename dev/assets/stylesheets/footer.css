@@ -1,7 +1,15 @@
-footer {
+.footer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 0px;
   align-items: center;
+  padding: 15px;
+  justify-content: center;
+}
+
+.footer a {
+  color: #333333;
+  font-size: 14px;
+  font-family: 'open_sansregular', Arial, sans-serif;
 }

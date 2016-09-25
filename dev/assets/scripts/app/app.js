@@ -1,7 +1,6 @@
 import 'babel-polyfill';
 import React from 'react';
 
-
 import Header from './Header'
 import Menu from './Menu'
 import ListRestaurants from './ListRestaurants'
@@ -18,12 +17,12 @@ window.tagsRef = {
     description: "Permet de prendre son déjeuner à emporter"
   },
   '2': {
-    title: "Costaud",
+    title: "Costaud 💪",
     description: "Copieux sont les plats (hyperbate)"
   },
   '3': {
     title: "Végétarien",
-    description: "Propose des plats sans viande, sans poisson"
+    description: "Propose au moins un plat sans viande, sans poisson"
   },
   '4': {
     title: "C'est la fin du mois",
@@ -35,7 +34,7 @@ window.tagsRef = {
   },
   '6': {
     title: "Vegan / Végétalien",
-    description: "Propose des repas sans viandes, poissons, oeufs, fromages. Aucun produit issu de l'exploitation animale"
+    description: "Propose au moins un plat sans viandes/poissons/oeufs/fromages. Aucun produit issu de l'exploitation animale"
   },
   '7': {
     title: "Asiatique",
@@ -74,7 +73,7 @@ window.tagsRef = {
     description: "Le classique"
   },
   '16': {
-    title: "Apéro",
+    title: "Apéro 🍷",
     description: "Idéal pour un after-work"
   },
   '17': {
@@ -85,10 +84,14 @@ window.tagsRef = {
     title: "Pas de CB",
     description: "Le restaurateur ne propose pas le paiement par Carte Bleue"
   },
+  '18': {
+    title: "🍕",
+    description: "Pizze !"
+  },
 
 
   '150': {
-    title: "Unicorns",
+    title: "Unicorns 🌈",
     description: ""
   },
   '151': {
@@ -108,13 +111,12 @@ window.tagsRef = {
     description: "Quand est-ce qu'ils reviennent ?"
   },
   '155': {
-    title: "",
+    title: "Install Gentoo",
     description: ""
   }
 }
- 
-const markers = require("json!./../../datas/restaurants-list.json");
 
+const markers = require("json!./../../datas/restaurants-list.json");
 markers.push({
     "position": {
       "lat": 48.857927,
@@ -143,7 +145,12 @@ markers.map(function(marker) {
   }
 });
 
-
+/**
+ * Filter restaurants to retrieve the restaurant w/
+ * @param  {String} slug       [description]
+ * @param  {Object} restaurant [description]
+ * @return {Boolean}            [description]
+ */
 const getRestaurantForSlug = function (slug, restaurant) {
   return restaurant.props.slug === slug;
 }
@@ -188,4 +195,8 @@ export default class App extends React.Component {
       </section>
     );
   }
+}
+
+App.propTypes = {
+  restaurants: React.PropTypes.array
 }

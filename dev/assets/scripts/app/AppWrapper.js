@@ -3,6 +3,7 @@ import React from 'react';
 
 
 import Header from './Header'
+import Footer from './Footer'
 import App from './App'
 import Menu from './Menu'
 import Map from './Map'
@@ -15,6 +16,7 @@ export default class AppWrapper extends React.Component {
       <div>
         <Header />
         {this.props.children}
+        <Footer />
       </div>
     );
   }

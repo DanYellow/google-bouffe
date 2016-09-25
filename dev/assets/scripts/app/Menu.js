@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 
-import { Link, withRouter } from 'react-router';
+import { Link } from 'react-router';
 
 import styles from './../../stylesheets/menu.css'
 

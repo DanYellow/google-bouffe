@@ -9,12 +9,11 @@ export default class ListRestaurants extends React.Component {
     super(props);
   }
 
-
   render() {
     return ( 
       <ul className={styles.list}> 
         {this.props.restaurants.map((restaurant, index) => {
-            return <ListRestaurantsItem currentRestaurant={this.props.currentRestaurant} {...restaurant} key={ Date.now() + index } />
+          return <ListRestaurantsItem currentRestaurant={this.props.currentRestaurant} {...restaurant} key={ Date.now() + index } />
         })}
       </ul>
     )
@@ -39,18 +38,11 @@ class ListRestaurantsItem extends React.Component {
     super(props);
   }
 
-  /**
-   * Indicates which restaurant have been selected
-   * @return null
-   */
-  selectedRestaurant() {
-    this.props.selectedRestaurantCallback(this.props);
-  }
-
   render() {
     const tags = this.props.props.tags.map(function(tag) {
       return window.tagsRef[tag].title
-    }).slice(0,3);
+    }).slice(0, 3);
+
     return ( 
       <li>
         <Link to={'/list/' + this.props.props.slug} activeStyle={ACTIVE}>

@@ -4,14 +4,15 @@
       "lat": 48.850861,
       "lng": 2.377926
     },
-    "title": "East mamma",
+    "title": "East mamma 🇮🇹",
     "props": {
       "description": "Restaurant Italien. Produits de qualité pour des plats de qualité.",
       "address": "33 Rue du Faubourg Saint-Antoine, 75011 Paris",
       "tags": [
-        "8",
-        "13",
-        "5"
+        8,
+        13,
+        5,
+        18
       ],
       "budgetScale": 4
     }

@@ -1,4 +1,4 @@
-# google-bouffe
+# Google Bouffe 🍽
 A React Project (no redux) to find a good place to eat at lunch
 
 
@@ -8,4 +8,4 @@ A React Project (no redux) to find a good place to eat at lunch
 3. npm start
 4. open localhost:9009
 
-prod js generation : webpack -p --config ./webpack.prod.config.js
+Generate js prod file : webpack -p --config ./webpack.prod.config.js
