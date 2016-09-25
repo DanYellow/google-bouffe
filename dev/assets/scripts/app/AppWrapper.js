@@ -14,7 +14,6 @@ export default class AppWrapper extends React.Component {
     return (
       <div>
         <Header />
-        
         {this.props.children}
       </div>
     );

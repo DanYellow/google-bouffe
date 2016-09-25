@@ -39,9 +39,9 @@
       "lat": 48.853131,
       "lng": 2.376798
     },
-    "title": "Starvin Joe",
+    "title": "Starvin Joe 🍔",
     "props": {
-      "description": "Mar1 y est déjà allé genre trois fois. C'est un bon burger.",
+      "description": "Mar1 y est déjà allé genre trois fois. On peut dire que c'est un bon burger.",
       "address": "42 Rue de Charonne, 75011 Paris",
       "tags": [
         12,
@@ -114,9 +114,12 @@
     },
     "title": "La Marelle",
     "props": {
-      "description": "",
+      "description": "Bar-bistrot simple avec terrasse doté de chaises d'écoliers pour une cuisine fine et un retour en enfance.",
       "address": "20 Rue Breguet, 75011 Paris",
-      "budgetScale": 5
+      "budgetScale": 5,
+      "tags": [
+        16,
+      ],
     }
   },
   {
@@ -139,7 +142,7 @@
       "lat": 48.853097,
       "lng": 2.378275
     },
-    "title": "Le Chalet Savoyard",
+    "title": "Le Chalet Savoyard 🇨🇭",
     "props": {
       "description": "Raclette Suisse.",
       "address": "58 Rue de Charonne, 75011 Paris",
@@ -186,7 +189,7 @@
     },
     "title": "New Hanoï",
     "props": {
-      "description": "Très bon, petite salle, l'attente y est nulle entre 12h et 12h30",
+      "description": "Très bon, petite salle, l'attente y est nulle entre 12h et 12h30.",
       "address": "25 Rue Saint-Sabin, 75011 Paris",
       "tags": [
         7,
@@ -200,7 +203,7 @@
       "lat": 48.8566843,
       "lng": 2.373068
     },
-    "title": "La Robe de la girafe",
+    "title": "La Robe de la girafe.",
     "props": {
       "description": "",
       "address": "5 Rue Froment, 75011 Paris",
@@ -218,7 +221,7 @@
     "title": "Café Divan",
     "props": {
       "description": "",
-      "address": "60 rue de la Roquette",
+      "address": "60 rue de la Roquette, 75011 Paris",
       "tags": [],
       "budgetScale": 5
     }

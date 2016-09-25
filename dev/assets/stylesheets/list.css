@@ -18,22 +18,30 @@
   border: none;
   text-align: left;
 
-  font-family: 'open_sansregular', Arial, sans-serif;
+  font-family: 'open_sanssemibold', Arial, sans-serif;
   font-size: 14px;
 
   display: flex;
   height: 100%;
-  align-items: center;
   padding-left: 10px;
   color: #333;
   text-decoration: none;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .list button:hover, .list a:hover {
   background-color: #e7e7e7;
 }
 
+.list li p {
+  font-family: 'open_sansregular', Arial, sans-serif;
+  font-size: 12px;
+  color: #00b21f;
+}
 
 .list button:focus, .list a:focus {
   border-left: 3px solid #da8998;
 }
+
+

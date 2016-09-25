@@ -59,7 +59,7 @@ window.tagsRef = {
   },
   '12': {
     title: "Burger",
-    description: "B.U.R.G.E.R."
+    description: "🍔 B.U.R.G.E.R. 🍔"
   },
   '13': {
     title: "On fait la queue",
@@ -96,7 +96,7 @@ window.tagsRef = {
     description: "Bastille Paris"
   },
   '152': {
-    title: "Crossfit - Bad form is the norm",
+    title: "Crossfit® - Bad form is the norm",
     description: "ZEEEEEEEEEEEERO !"
   },
   '153': {
@@ -108,7 +108,7 @@ window.tagsRef = {
     description: "Quand est-ce qu'ils reviennent ?"
   },
   '155': {
-    title: "Unicorns",
+    title: "",
     description: ""
   }
 }
@@ -137,6 +137,13 @@ markers.map(function(marker) {
   return marker.props.slug = Utils.slugify(marker.title)
 });
 
+markers.map(function(marker) {
+  if (!marker.props.tags) {
+    return marker.props.tags = [];
+  }
+});
+
+
 const getRestaurantForSlug = function (slug, restaurant) {
   return restaurant.props.slug === slug;
 }
@@ -156,7 +163,7 @@ export default class App extends React.Component {
 
     let currentRestaurant = {};
     
-    let slug = this.props.params.slug || 'digitaslbi';
+    let slug = this.props.params.slug;
     let noResult = false;
     currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, slug));
     if (!currentRestaurant) {

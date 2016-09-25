@@ -48,10 +48,15 @@ class ListRestaurantsItem extends React.Component {
   }
 
   render() {
+    const tags = this.props.props.tags.map(function(tag) {
+      return window.tagsRef[tag].title
+    }).slice(0,3);
     return ( 
       <li>
         <Link to={'/list/' + this.props.props.slug} activeStyle={ACTIVE}>
           <span>{this.props.title}</span>
+          
+          {tags.length > 0 && <p>Tags : {tags.join(', ')}</p>}
         </Link>
       </li>
     )

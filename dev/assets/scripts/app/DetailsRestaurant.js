@@ -16,7 +16,7 @@ class BudgetMeter extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={{ fontFamily: "'open_sansregular', Arial, sans-serif", marginBottom: "3px" }}>Budget</h3>
+        <h3 style={{ fontFamily: "'open_sansregular', Arial, sans-serif", marginBottom: "3px" }} title="Budget pour une personne">Budget</h3>
         <div className={styles.meterContainer}>
           <div style={budgetMeterStyle(this.props.budgetScale)}></div>
         </div>
@@ -58,10 +58,6 @@ const meterBGColor = function (value) {
 export default class DetailsRestaurant extends React.Component {
   constructor(props) {
     super(props);
-
-    if (!this.props.restaurant.tags) {
-      this.props.restaurant.tags = [];
-    }
   }
 
   shouldComponentUpdate (nextProps, nextState) {
