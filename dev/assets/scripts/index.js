@@ -13,10 +13,6 @@ import App from './app/App'
 import DetailsView from './app/DetailsView'
 import NotFound from './app/404NotFound'
 
-// https://medium.com/@dabit3/beginner-s-guide-to-react-router-53094349669#.kix0vbulz
-// https://github.com/ReactTraining/react-router/issues/1857
-// https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841#.roy5kvmre
-// https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/
 
 render(
   <Router history={hashHistory}>

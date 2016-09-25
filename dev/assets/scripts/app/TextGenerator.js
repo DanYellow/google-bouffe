@@ -27,8 +27,14 @@ export default class TextGenerator extends React.Component {
   }
 
   render() {
-    return (<span onClick={ () => this.randomDescription() }>{this.state.text}</span>)
+    return (<span style={styles.text} onClick={ () => this.randomDescription() }>{this.state.text}</span>)
     // return React.createElement('span', {}, 'Hello!');
   }
 }
 
+const styles = {
+  text: {
+    color: '#da032c',
+    fontFamily: "'open_sanssemibold', Arial, sans-serif"
+  }
+}

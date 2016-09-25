@@ -41,6 +41,10 @@ export default class DetailsDigitas extends React.Component {
     return this.props.restaurant.original_description.replace("__placeholder1__", this.RANDOMWORDS[Math.floor(Math.random() * this.RANDOMWORDS.length)]).replace("__placeholder2__", this.RANDOMWORDS[Math.floor(Math.random() * this.RANDOMWORDS.length)]); 
   }
 
+  componentWillReceiveProps(nextProps) {
+    document.title = `🦄 ${nextProps.restaurant.title}`;
+  }
+
   render() {
     var tags = null;
     if (this.props.restaurant.tags.length) {

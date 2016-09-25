@@ -64,6 +64,10 @@ export default class DetailsRestaurant extends React.Component {
     return nextProps.restaurant.title !== this.props.restaurant.title;
   }
 
+  componentWillReceiveProps(nextProps) {
+    document.title = `🍽 Google Bouffe - ${nextProps.restaurant.title}`;
+  }
+
   render() {
     var tags = null;
     if (this.props.restaurant.tags.length) {

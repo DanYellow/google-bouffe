@@ -7,6 +7,9 @@ logs
 *.log
 npm-debug.log*
 
+stories
+.storybook
+
 # Runtime data
 pids
 *.pid
