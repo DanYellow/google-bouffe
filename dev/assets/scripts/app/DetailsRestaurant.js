@@ -13,30 +13,33 @@ class BudgetMeter extends React.Component {
     budgetScale: React.PropTypes.number
   }
 
+  budgetMeterStyle (value) {
+    value = value * .1;
+    return {
+      width: "100%",
+      transform: `scaleX(${value})`,
+      transformOrigin: "left center",
+      backgroundColor: meterBGColor(value),
+      height: '100%',
+      borderRadius: "3px",
+      'transition': '.3s all'
+    }
+  }
+
   render() {
     return (
       <div>
         <h3 style={{ fontFamily: "'open_sansregular', Arial, sans-serif", marginBottom: "3px" }} title="Budget pour une personne">Budget</h3>
         <div className={styles.meterContainer}>
-          <div style={budgetMeterStyle(this.props.budgetScale)}></div>
+          <div style={this.budgetMeterStyle(this.props.budgetScale)}></div>
         </div>
       </div>
     )
   }
 }
 
-var budgetMeterStyle = function(value) {
-  value = value * .1;
-  return {
-    width: "100%",
-    transform: `scaleX(${value})`,
-    transformOrigin: "left center",
-    backgroundColor: meterBGColor(value),
-    height: '100%',
-    borderRadius: "3px",
-    'transition': '.3s all'
-  }
-}
+
+
 
 const meterBGColor = function (value) {
   if (value > .75) {
@@ -54,18 +57,39 @@ const meterBGColor = function (value) {
   }
 }
 
+class ItineraryContainer extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
+    render() {
+      return (
+        <div>
+          Hello
+        </div>);
+    }
+}
+
 
 export default class DetailsRestaurant extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      displayItinary: false
+    }
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    return nextProps.restaurant.title !== this.props.restaurant.title;
-  }
+  // shouldComponentUpdate (nextProps, nextState) {
+  //   return nextProps.restaurant.title !== this.props.restaurant.title;
+  // }
 
   componentWillReceiveProps(nextProps) {
     document.title = `🍽 Google Bouffe - ${nextProps.restaurant.title}`;
+  }
+
+  toggleDisplay() {
+    this.setState({displayItinary: !this.state.displayItinary})
   }
 
   render() {
@@ -82,16 +106,25 @@ export default class DetailsRestaurant extends React.Component {
     if (this.props.restaurant.description) {
       description = `‘‘${this.props.restaurant.description}’’`
     }
-
+    
     return (
       <section className={styles.container}>
         <header>
           <h1 className={styles.title}>{this.props.restaurant.title}</h1>
           <p itemProp="streetAddress" className={styles.address}><span style={{ fontFamily: "'open_sanssemibold', Arial, sans-serif" }}>Adresse : </span>{this.props.restaurant.address}</p>
         </header>
-        <blockquote itemProp="description" className={styles.description}>{ description }</blockquote>
-        { tags }
-        <BudgetMeter budgetScale={this.props.restaurant.budgetScale} />
+        <div className={[styles.details, (this.state.displayItinary) ? styles.hide : null].join(' ')}>
+          <blockquote itemProp="description" className={styles.description}>{ description }</blockquote>
+          { tags }
+          <BudgetMeter budgetScale={this.props.restaurant.budgetScale} />
+
+          <button style={{marginTop: 'auto'}} onClick={() => this.toggleDisplay()}>Afficher itinéraire</button>
+        </div>
+
+        <div className={[styles.details, (!this.state.displayItinary) ? styles.hide : null].join(' ')}>
+          <button style={{marginTop: '0'}} onClick={() => this.toggleDisplay()}>Cacher itinéraire</button>
+          <ItineraryContainer  />
+        </div>
       </section>
     );
   }

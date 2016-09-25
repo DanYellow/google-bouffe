@@ -4,6 +4,13 @@
   padding: 0 5px 5px 15px;
   height: 100%;
   border-left: 1px solid #da032c;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container header {
+  margin-bottom: 0;
 }
 
 .title {
@@ -25,7 +32,6 @@
   font-size: 18px;
   font-family: Georgia, serif;
 }
-  
 
 .tags {
   display: flex;
@@ -109,6 +115,19 @@
   transform: rotateY(180deg);
 }
 
+.details, .itinerary {
+  align-self: stretch;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  transition: flex .3s;
+}
+
+.details.hide, .itinerary.hide {
+  flex: .00001;
+  overflow: hidden;
+}
 
 .clip-svg {
   clip-path: url(#myClip);

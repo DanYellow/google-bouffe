@@ -175,23 +175,21 @@ export default class App extends React.Component {
   componentDidUpdate(nextProps) {
     // this.directionsDisplay.setMap(this.mapContainer.props.map);
 
+    const self = this;
 
+    this.directionsService.route({
+      origin: {lat: 48.857927, lng: 2.373118}, // Digitas
+      destination: this.currentRestaurant.position, // Restaurant position
+      travelMode: google.maps.TravelMode.WALKING
+    }, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        self.directionsDisplay.setDirections(response);
 
-    // const self = this;
-
-    // this.directionsService.route({
-    //   origin: {lat: 48.857927, lng: 2.373118}, // Digitas
-    //   destination: this.currentRestaurant.position, // Restaurant position
-    //   travelMode: google.maps.TravelMode.WALKING
-    // }, function(response, status) {
-    //   if (status == google.maps.DirectionsStatus.OK) {
-    //     self.directionsDisplay.setDirections(response);
-
-    //     console.log(self.directionsDisplay.directions.routes[0].legs[0].steps)
-    //   } else {
-    //     window.alert('Directions request failed due to ' + status);
-    //   }
-    // });
+        console.log(self.directionsDisplay.directions.routes[0].legs[0].steps)
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
   }
 
   render() {
