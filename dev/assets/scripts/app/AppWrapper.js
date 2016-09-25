@@ -6,7 +6,6 @@ import Header from './Header'
 import Footer from './Footer'
 import App from './App'
 import Menu from './Menu'
-import Map from './Map'
 
 import styles from './../../stylesheets/map.css'
 

@@ -157,8 +157,41 @@ const getRestaurantForSlug = function (slug, restaurant) {
 
 
 export default class App extends React.Component {
+  constructor (props) {
+    super(props);
+
+    this.directionsDisplay = new google.maps.DirectionsRenderer;
+    this.directionsService = new google.maps.DirectionsService;
+
+    this.currentRestaurant = {};
+  }
+
+
+
   static defaultProps = {
     restaurants: markers
+  }
+
+  componentDidUpdate(nextProps) {
+    // this.directionsDisplay.setMap(this.mapContainer.props.map);
+
+
+
+    // const self = this;
+
+    // this.directionsService.route({
+    //   origin: {lat: 48.857927, lng: 2.373118}, // Digitas
+    //   destination: this.currentRestaurant.position, // Restaurant position
+    //   travelMode: google.maps.TravelMode.WALKING
+    // }, function(response, status) {
+    //   if (status == google.maps.DirectionsStatus.OK) {
+    //     self.directionsDisplay.setDirections(response);
+
+    //     console.log(self.directionsDisplay.directions.routes[0].legs[0].steps)
+    //   } else {
+    //     window.alert('Directions request failed due to ' + status);
+    //   }
+    // });
   }
 
   render() {
@@ -168,19 +201,21 @@ export default class App extends React.Component {
       ViewDisplay = <Map markers={this.props.restaurants} />
     }
 
-    let currentRestaurant = {};
-    
     let slug = this.props.params.slug;
     let noResult = false;
-    currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, slug));
-    if (!currentRestaurant) {
-      currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, 'digitaslbi'));
+    this.currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, slug));
+    if (!this.currentRestaurant) {
+      this.currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, 'digitaslbi'));
       noResult = true;
     }
+    
+    this.currentRestaurant = Object.assign(this.currentRestaurant.props, { 
+      title: this.currentRestaurant.title,
+      position: this.currentRestaurant.position 
+    });
 
-    currentRestaurant = Object.assign(currentRestaurant.props, { title: currentRestaurant.title });
-    if (!currentRestaurant.tags) {
-      currentRestaurant.tags = [];
+    if (!this.currentRestaurant.tags) {
+      this.currentRestaurant.tags = [];
     }
 
     return (
@@ -190,7 +225,7 @@ export default class App extends React.Component {
           {ViewDisplay}
         </div>
 
-        {this.props.children && React.cloneElement(this.props.children, { restaurant: currentRestaurant, noResult: noResult })}
+        {this.props.children && React.cloneElement(this.props.children, { restaurant: this.currentRestaurant, noResult: noResult })}
 
       </section>
     );

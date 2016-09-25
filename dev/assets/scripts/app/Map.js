@@ -1,6 +1,8 @@
 import 'babel-polyfill';
 import React from 'react';
 
+import _ from 'lodash'
+
 import {GoogleMapLoader, GoogleMap, Marker, Polygon} from "react-google-maps";
 import { withRouter } from 'react-router';
 
@@ -43,6 +45,9 @@ export default class Map extends React.Component {
         ]
       }]
     }
+
+    this.directionsDisplay = new google.maps.DirectionsRenderer;
+    this.directionsService = new google.maps.DirectionsService;
   }
 
   static defaultProps = {
@@ -58,6 +63,24 @@ export default class Map extends React.Component {
    */
   selectMarker(index, marker) {
     this.props.router.push(`/map/${marker.props.slug}`)
+
+    this.directionsDisplay.setMap(this.mapContainer.props.map);
+
+    const self = this;
+
+    this.directionsService.route({
+      origin: {lat: 48.857927, lng: 2.373118}, // Digitas
+      destination: marker.position, // Restaurant position
+      travelMode: google.maps.TravelMode.WALKING
+    }, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        self.directionsDisplay.setDirections(response);
+
+        console.log(self.directionsDisplay.directions.routes[0].legs[0].steps)
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
   }
 
   render() {
@@ -77,6 +100,7 @@ export default class Map extends React.Component {
             defaultCenter={this.props.defaultCenter}
             defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
             defaultOptions={this.mapOptions}
+            ref={(c) => this.mapContainer = c}
           >
 
           <Polygon options={{

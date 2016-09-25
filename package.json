@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "json-loader": "^0.5.4",
+    "lodash": "^4.16.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-google-maps": "^4.11.0",
@@ -35,6 +36,6 @@
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.1",
     "webpack-dev-server": "^1.16.1",
-    "webpack-hot-middleware": "^2.12.2",
+    "webpack-hot-middleware": "^2.12.2"
   }
 }
