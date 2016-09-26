@@ -1,7 +1,7 @@
 .container {
   flex: 0.35;
   margin-left: 10px;
-  padding: 0 5px 5px 15px;
+  padding: 0 5px 0px 15px;
   height: 100%;
   border-left: 1px solid #da032c;
 
@@ -122,6 +122,15 @@
   display: flex;
   flex-direction: column;
   transition: flex .3s;
+  overflow: auto;
+}
+
+.itinerary {
+  margin-top: 25px;
+}
+
+.itinerary.hide {
+  margin-top: 0;
 }
 
 .details.hide, .itinerary.hide {

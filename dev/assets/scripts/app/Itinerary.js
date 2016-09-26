@@ -1,12 +1,16 @@
 import 'babel-polyfill';
 import React from 'react';
 
+import _ from 'lodash'
+
 import styles from './../../stylesheets/itinerary.css'
+
+
 
 export default class ItineraryContainer extends React.Component {
   render() {
     return (
-      <div>
+      <div className={styles['itinerary-container']}>
         <Itinerary datas={this.props.datas} />
       </div>
     );
@@ -29,3 +33,16 @@ class Itinerary extends React.Component {
     )
   }
 }
+
+export class ItinerarySummary extends React.Component {
+  render() {
+    return (
+      <div className={styles['itinerary-summary-container']}>
+        <p>Distance totale : {(_.sum(_.map(this.props.datas, 'distance.value')) / 1000).toFixed(2)} km</p>
+        <p>Durée total totale : {(_.sum(_.map(this.props.datas, 'duration.value')) / 60).toFixed(2)} minute(s) </p>
+      </div>
+    );
+  }
+}
+
+// Tseho: Dans un reducer les deux params, ils représentent bien la valeur par défaut de ton state et l'action lancée, c'est ça ?

@@ -117,11 +117,12 @@ window.tagsRef = {
 }
 
 const markers = require("json!./../../datas/restaurants-list.json");
-// markers.sort(function(a, b){
-//   if(a.title < b.title) return -1;
-//   if(a.title > b.title) return 1;
-//   return 0;
-// })
+// Order alphabetically restaurants
+markers.sort(function(a, b){
+  if(a.title < b.title) return -1;
+  if(a.title > b.title) return 1;
+  return 0;
+})
 
 markers.push({
     "position": {
@@ -216,7 +217,6 @@ export default class App extends React.Component {
         self.setState({ 
           currentRestaurantItinerary: response.routes[0].legs[0].steps,
           currentRestaurantDirections: response,
-          currentRestaurant: currentRestaurant
         })
       } else {
         window.alert('Directions request failed due to ' + status);

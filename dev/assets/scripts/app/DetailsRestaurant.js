@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 
-import ItineraryContainer from './Itinerary'
+import ItineraryContainer, { ItinerarySummary } from './Itinerary'
 
 import styles from './../../stylesheets/details-view.css'
 
@@ -108,9 +108,10 @@ export default class DetailsRestaurant extends React.Component {
           <button style={{marginTop: 'auto'}} onClick={() => this.toggleDisplay()}>Afficher itinéraire</button>
         </div>
 
-        <div className={[styles.details, (!this.state.displayItinary) ? styles.hide : null].join(' ')}>
+        <div className={[styles.details, styles.itinerary, (!this.state.displayItinary) ? styles.hide : null].join(' ')}>
           <button style={{marginTop: '0'}} onClick={() => this.toggleDisplay()}>Cacher itinéraire</button>
           <ItineraryContainer datas={this.props.itinerary} />
+          <ItinerarySummary datas={this.props.itinerary} />
         </div>
       </section>
     );

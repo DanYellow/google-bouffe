@@ -1,3 +1,7 @@
+.itinerary-container {
+  overflow: auto;
+}
+
 .itinerary {
   margin-top: 15px;
 }
@@ -7,7 +11,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 5px;
+  padding: 5px 5px 5px 0;
 
   font-size: 14px;
   font-family: 'open_sansregular', Arial, sans-serif;
@@ -23,4 +27,11 @@
 	font-size: 12px;
   font-family: 'open_sanssemibold', Arial, sans-serif;
   margin-top: 7px;
+}
+
+.itinerary-summary-container {
+  border-top: 1px solid #da032c;
+  padding: 15px 15px 0 0;
+  font-size: 14px;
+  font-family: 'open_sansregular', Arial, sans-serif;
 }
