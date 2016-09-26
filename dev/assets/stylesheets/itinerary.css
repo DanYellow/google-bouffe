@@ -1,0 +1,26 @@
+.itinerary {
+  margin-top: 15px;
+}
+
+.itinerary li {
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px;
+
+  font-size: 14px;
+  font-family: 'open_sansregular', Arial, sans-serif;
+}
+
+
+.itinerary li b { 
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  color: #da032c;
+}
+
+.itinerary .details {
+	font-size: 12px;
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  margin-top: 7px;
+}

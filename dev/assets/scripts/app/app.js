@@ -117,6 +117,12 @@ window.tagsRef = {
 }
 
 const markers = require("json!./../../datas/restaurants-list.json");
+// markers.sort(function(a, b){
+//   if(a.title < b.title) return -1;
+//   if(a.title > b.title) return 1;
+//   return 0;
+// })
+
 markers.push({
     "position": {
       "lat": 48.857927,
@@ -145,6 +151,7 @@ markers.map(function(marker) {
   }
 });
 
+
 /**
  * Filter restaurants to retrieve the restaurant w/
  * @param  {String} slug       [description]
@@ -160,60 +167,73 @@ export default class App extends React.Component {
   constructor (props) {
     super(props);
 
-    this.directionsDisplay = new google.maps.DirectionsRenderer;
     this.directionsService = new google.maps.DirectionsService;
 
-    this.currentRestaurant = {};
+    this.noResult = false;
+
+    this.state = {
+      currentRestaurantItinerary: [],
+      currentRestaurantDirections: {},
+      currentRestaurant: {}
+    }
   }
 
-
-
-  static defaultProps = {
-    restaurants: markers
+  componentWillMount () {
+    this.getNextRestaurant(this.props)
   }
 
-  componentDidUpdate(nextProps) {
-    // this.directionsDisplay.setMap(this.mapContainer.props.map);
+  componentWillReceiveProps (nextProps) {
+    this.getNextRestaurant(nextProps)
+  }
+
+  getNextRestaurant (props) {
+    let slug = props.params.slug;
+    
+    let currentRestaurant = props.restaurants.find(getRestaurantForSlug.bind(this, slug));
+    if (!currentRestaurant) {
+      currentRestaurant = props.restaurants.find(getRestaurantForSlug.bind(this, 'digitaslbi'));
+      this.noResult = true;
+    }
+    
+    currentRestaurant = Object.assign(currentRestaurant.props, { 
+      title: currentRestaurant.title,
+      position: currentRestaurant.position 
+    });
+
+    if (!currentRestaurant.tags) {
+      currentRestaurant.tags = [];
+    }
+
+    this.setState({currentRestaurant: currentRestaurant});
 
     const self = this;
-
     this.directionsService.route({
       origin: {lat: 48.857927, lng: 2.373118}, // Digitas
-      destination: this.currentRestaurant.position, // Restaurant position
+      destination: currentRestaurant.position, // Restaurant position
       travelMode: google.maps.TravelMode.WALKING
     }, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-        self.directionsDisplay.setDirections(response);
-
-        console.log(self.directionsDisplay.directions.routes[0].legs[0].steps)
+        self.setState({ 
+          currentRestaurantItinerary: response.routes[0].legs[0].steps,
+          currentRestaurantDirections: response,
+          currentRestaurant: currentRestaurant
+        })
       } else {
         window.alert('Directions request failed due to ' + status);
       }
     });
   }
 
+  static defaultProps = {
+    restaurants: markers
+  }
+
+
   render() {
     let ViewDisplay = <ListRestaurants restaurants={this.props.restaurants} />
 
     if (this.props.route.path === 'map') {
-      ViewDisplay = <Map markers={this.props.restaurants} />
-    }
-
-    let slug = this.props.params.slug;
-    let noResult = false;
-    this.currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, slug));
-    if (!this.currentRestaurant) {
-      this.currentRestaurant = this.props.restaurants.find(getRestaurantForSlug.bind(this, 'digitaslbi'));
-      noResult = true;
-    }
-    
-    this.currentRestaurant = Object.assign(this.currentRestaurant.props, { 
-      title: this.currentRestaurant.title,
-      position: this.currentRestaurant.position 
-    });
-
-    if (!this.currentRestaurant.tags) {
-      this.currentRestaurant.tags = [];
+      ViewDisplay = <Map markers={this.props.restaurants} directions={this.state.currentRestaurantDirections} />
     }
 
     return (
@@ -223,7 +243,7 @@ export default class App extends React.Component {
           {ViewDisplay}
         </div>
 
-        {this.props.children && React.cloneElement(this.props.children, { restaurant: this.currentRestaurant, noResult: noResult })}
+        {this.props.children && React.cloneElement(this.props.children, { restaurant: this.state.currentRestaurant, noResult: this.noResult, itinerary: this.state.currentRestaurantItinerary })}
 
       </section>
     );

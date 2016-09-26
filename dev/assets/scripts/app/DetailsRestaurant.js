@@ -1,6 +1,8 @@
 import 'babel-polyfill';
 import React from 'react';
 
+import ItineraryContainer from './Itinerary'
+
 import styles from './../../stylesheets/details-view.css'
 
 class BudgetMeter extends React.Component {
@@ -39,8 +41,6 @@ class BudgetMeter extends React.Component {
 }
 
 
-
-
 const meterBGColor = function (value) {
   if (value > .75) {
     return '#ff0000';
@@ -55,19 +55,6 @@ const meterBGColor = function (value) {
   } else {
     return 'white';
   }
-}
-
-class ItineraryContainer extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-
-    render() {
-      return (
-        <div>
-          Hello
-        </div>);
-    }
 }
 
 
@@ -123,7 +110,7 @@ export default class DetailsRestaurant extends React.Component {
 
         <div className={[styles.details, (!this.state.displayItinary) ? styles.hide : null].join(' ')}>
           <button style={{marginTop: '0'}} onClick={() => this.toggleDisplay()}>Cacher itinéraire</button>
-          <ItineraryContainer  />
+          <ItineraryContainer datas={this.props.itinerary} />
         </div>
       </section>
     );

@@ -50,9 +50,21 @@ export default class Map extends React.Component {
     this.directionsService = new google.maps.DirectionsService;
   }
 
+  componentWillUpdate () {
+    this.directionsDisplay.setMap(this.mapContainer.props.map);
+    this.directionsDisplay.setDirections(this.props.directions);
+  }
+
+ 
+
+  componentWillReceiveProps () {
+    // this.directionsDisplay.setDirections(this.props.directions);
+  }
+
   static defaultProps = {
     markers: [],
-    defaultCenter: {lat: 48.857511, lng: 2.373364}
+    defaultCenter: {lat: 48.857511, lng: 2.373364},
+    directions: []
   }
 
   /**
@@ -64,23 +76,25 @@ export default class Map extends React.Component {
   selectMarker(index, marker) {
     this.props.router.push(`/map/${marker.props.slug}`)
 
-    this.directionsDisplay.setMap(this.mapContainer.props.map);
+    
 
-    const self = this;
+    // 
 
-    this.directionsService.route({
-      origin: {lat: 48.857927, lng: 2.373118}, // Digitas
-      destination: marker.position, // Restaurant position
-      travelMode: google.maps.TravelMode.WALKING
-    }, function(response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        self.directionsDisplay.setDirections(response);
+    // const self = this;
 
-        console.log(self.directionsDisplay.directions.routes[0].legs[0].steps)
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
-    });
+    // this.directionsService.route({
+    //   origin: {lat: 48.857927, lng: 2.373118}, // Digitas
+    //   destination: marker.position, // Restaurant position
+    //   travelMode: google.maps.TravelMode.WALKING
+    // }, function(response, status) {
+    //   if (status == google.maps.DirectionsStatus.OK) {
+    //     self.directionsDisplay.setDirections(response);
+
+    //     console.log(self.directionsDisplay.directions.routes[0].legs[0].steps)
+    //   } else {
+    //     window.alert('Directions request failed due to ' + status);
+    //   }
+    // });
   }
 
   render() {
