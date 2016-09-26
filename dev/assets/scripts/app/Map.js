@@ -78,11 +78,7 @@ export default class Map extends React.Component {
    * @return {null}
    */
   selectMarker(index, marker) {
-    this.props.router.push(`/map/${marker.props.slug}`)
-
-    
-
-    // 
+    this.props.router.push(`/map/${marker.props.slug}`);
 
     const self = this;
 

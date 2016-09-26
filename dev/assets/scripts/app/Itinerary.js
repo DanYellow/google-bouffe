@@ -39,7 +39,7 @@ export class ItinerarySummary extends React.Component {
     return (
       <div className={styles['itinerary-summary-container']}>
         <p>Distance totale : {(_.sum(_.map(this.props.datas, 'distance.value')) / 1000).toFixed(2)} km</p>
-        <p>Durée total totale : {(_.sum(_.map(this.props.datas, 'duration.value')) / 60).toFixed(2)} minute(s) </p>
+        <p>Durée totale : {(_.sum(_.map(this.props.datas, 'duration.value')) / 60).toFixed(0)} minute(s) </p>
       </div>
     );
   }

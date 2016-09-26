@@ -1,5 +1,6 @@
 .itinerary-container {
   overflow: auto;
+  height: 325px;
 }
 
 .itinerary {
@@ -34,4 +35,5 @@
   padding: 15px 15px 0 0;
   font-size: 14px;
   font-family: 'open_sansregular', Arial, sans-serif;
+  margin-top: auto;
 }
