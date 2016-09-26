@@ -66,7 +66,7 @@ window.tagsRef = {
   },
   '14': {
     title: "Cheat meal",
-    description: "La nourriture n'est pas très diététique. Mais c'est bon petit plaisir, alors c'est pardonné"
+    description: "La nourriture n'est pas très diététique. Mais c'est un bon petit plaisir, alors c'est pardonné"
   },
   '15': {
     title: "Sandwichs",
@@ -81,7 +81,7 @@ window.tagsRef = {
     description: "Propose des prix préférentiels sur l'alcool durant une période"
   },
   '18': {
-    title: "Pas de CB",
+    title: "Pas de CB 💳",
     description: "Le restaurateur ne propose pas le paiement par Carte Bleue"
   },
   '18': {
