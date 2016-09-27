@@ -23,7 +23,7 @@ class BudgetMeter extends React.Component {
       transformOrigin: "left center",
       backgroundColor: meterBGColor(value),
       height: '100%',
-      borderRadius: "3px",
+      borderRadius: '3px',
       'transition': '.3s all'
     }
   }

@@ -14,7 +14,7 @@ export default class Map extends React.Component {
     super(props);
 
     this.mapOptions = {
-      minZoom: 13,
+      minZoom: 15,
       fullscreenControl: false,
       streetViewControl: false,
       scaleControl: true,
@@ -107,7 +107,7 @@ export default class Map extends React.Component {
         }
         googleMapElement={
           <GoogleMap
-            defaultZoom={15}
+            defaultZoom={16}
             defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
             defaultCenter={this.props.defaultCenter}
             defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
