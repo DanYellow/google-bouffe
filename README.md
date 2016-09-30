@@ -21,3 +21,9 @@ Generate js prod file : webpack -p --config ./webpack.prod.config.js
 - https://gist.github.com/chantastic/fc9e3853464dffdb1e3c
 - https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.9rj3ki2x5
 - https://medium.com/@housecor/in-defense-of-javascript-classes-e50bf2270a95#.p8t4lqjwe
+
+
+### TO DO
+- Add event system
+- Add survey system
+- Display itinerary of restaurant when switch list to map

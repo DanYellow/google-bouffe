@@ -258,5 +258,69 @@
       ],
       "budgetScale": 4
     }
+  },
+  {
+    "position": {
+      "lat": 48.861793,
+      "lng": 2.373047
+    },
+    "title": "East Side Burgers",
+    "props": {
+      "description": "Ce petit restaurant coloré aux briques apparentes propose des burgers et hot dogs végétariens et des desserts.",
+      "address": "60 Boulevard Voltaire, 75011 Paris",
+      "tags": [
+        3,
+        6
+      ],
+      "budgetScale": 5
+    }
+  },
+  {
+    "position": {
+      "lat": 48.855188, 
+      "lng": 2.372102
+    },
+    "title": "Augustine",
+    "props": {
+      "description": "",
+      "address": "10 Rue Saint-Sabin, 75011 Paris",
+      "tags": [
+        19,
+        15
+      ],
+      "budgetScale": 5
+    }
+  },
+  {
+    "position": {
+      "lat": 48.857788,
+      "lng": 2.367210
+    },
+    "title": "Les Caves Saint Gilles",
+    "props": {
+      "description": "Tapas et plats accompagnés de vins espagnols dans un bistrot de type bodega madrilène tapissé d'azuleros.",
+      "address": "4 Rue Saint-Gilles, 75003 Paris",
+      "tags": [
+        21
+      ],
+      "budgetScale": 5
+    }
+  },
+  {
+    "position": {
+      "lat": 48.855564,
+      "lng": 2.372300
+    },
+    "title": "Café de l'Industrie",
+    "props": {
+      "description": "Restaurant français proposant une carte de plats classiques, dans une atmosphère patinée chaleureuse.",
+      "address": "16 Rue Saint-Sabin, 75011 Paris",
+      "tags": [
+        20
+      ],
+      "budgetScale": 5
+    }
   }
+
+  
 ]

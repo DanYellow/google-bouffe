@@ -85,8 +85,20 @@ window.tagsRef = {
     description: "Le restaurateur ne propose pas le paiement par Carte Bleue"
   },
   '18': {
-    title: "🍕",
+    title: "🍕(Pizza)",
     description: "Pizze !"
+  },
+  '19': {
+    title: "Salades",
+    description: ""
+  },
+  '20': {
+    title: "Brasserie",
+    description: ""
+  },
+  '21': {
+    title: "Tapas",
+    description: "Petits amuse-gueules d'origine espagnole composées de différents ingrédients"
   },
 
 
@@ -116,7 +128,7 @@ window.tagsRef = {
   }
 }
 
-const markers = require("json!./../../datas/restaurants-list.json");
+const markers = require('json!./../../datas/restaurants-list.json');
 // Order alphabetically restaurants
 markers.sort(function(a, b){
   if(a.title < b.title) return -1;
@@ -125,19 +137,19 @@ markers.sort(function(a, b){
 })
 
 markers.push({
-    "position": {
-      "lat": 48.857927,
-      "lng": 2.373118
+    'position': {
+      'lat': 48.857927,
+      'lng': 2.373118
     },
-    "title": "DigitasLBi",
-    icon: require("./../../images/logo-digitas.png"),
+    'title': 'DigitasLBi',
+    icon: require('./../../images/logo-digitas.png'),
     zIndex: 999999,
-    "props": {
+    'props': {
       filtrabled: false,
-      "description": "Mélange détonant entre __placeholder1__ et __placeholder2__",
-      "original_description": "Mélange détonant entre __placeholder1__ et __placeholder2__",
-      "address": "30-34 Rue du Chemin Vert, 75011 Paris",
-      "tags": [150, 151, 152, 153, 154, 155],
+      'description': 'Mélange détonant entre __placeholder1__ et __placeholder2__',
+      'original_description': 'Mélange détonant entre __placeholder1__ et __placeholder2__',
+      'address': '30-34 Rue du Chemin Vert, 75011 Paris',
+      'tags': [150, 151, 152, 153, 154, 155],
     } 
   }
 );
@@ -216,7 +228,7 @@ export default class App extends React.Component {
       if (status == google.maps.DirectionsStatus.OK) {
         self.setState({ 
           currentRestaurantItinerary: response.routes[0].legs[0].steps,
-          currentRestaurantDirections: response,
+          currentRestaurantDirections: response
         })
       } else {
         window.alert('Directions request failed due to ' + status);

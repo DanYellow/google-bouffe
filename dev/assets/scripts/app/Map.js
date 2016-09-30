@@ -51,11 +51,14 @@ export default class Map extends React.Component {
   }
 
   componentDidMount () {
-    console.log(this.mapContainer)
+    console.log("dir", this.props.directions)
+
   }
 
   componentWillUpdate () {
+
     this.directionsDisplay.setMap(this.mapContainer.props.map);
+
     // this.directionsDisplay.setDirections(this.props.directions);
   }
 
@@ -96,6 +99,7 @@ export default class Map extends React.Component {
   }
 
   render() {
+    console.log("render")
     return (
       <GoogleMapLoader
         containerElement={
