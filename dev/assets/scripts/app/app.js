@@ -138,8 +138,8 @@ markers.sort(function(a, b){
 
 markers.push({
     'position': {
-      'lat': 48.857927,
-      'lng': 2.373118
+      'lat': 48.858042,
+      'lng': 2.373359
     },
     'title': 'DigitasLBi',
     icon: require('./../../images/logo-digitas.png'),
@@ -206,6 +206,8 @@ export default class App extends React.Component {
     if (!currentRestaurant) {
       currentRestaurant = props.restaurants.find(getRestaurantForSlug.bind(this, 'digitaslbi'));
       this.noResult = true;
+    } else {
+      this.noResult = false;
     }
     
     currentRestaurant = Object.assign(currentRestaurant.props, { 
@@ -230,6 +232,7 @@ export default class App extends React.Component {
           currentRestaurantItinerary: response.routes[0].legs[0].steps,
           currentRestaurantDirections: response
         })
+        console.log("rerer", self.state)
       } else {
         window.alert('Directions request failed due to ' + status);
       }

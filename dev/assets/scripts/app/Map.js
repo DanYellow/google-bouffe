@@ -118,10 +118,10 @@ export default class Map extends React.Component {
             defaultOptions={this.mapOptions}
             ref={(c) => this.mapContainer = c}
           >
-
+          
           <Polygon options={{
-            paths: [{lat: 48.858081, lng: 2.372110}, {lat: 48.857274, lng: 2.372843},
-            {lat: 48.857711, lng: 2.373974}, {lat: 48.858491, lng: 2.373130}],
+            paths: [{lat: 48.858347, lng: 2.372747}, {lat: 48.858516, lng: 2.373284},
+            {lat: 48.857719, lng: 2.373949}, {lat: 48.857468, lng: 2.373364}],
             strokeColor: '#FFFFFF',
             strokeOpacity: 0.8,
             strokeWeight: 1,
