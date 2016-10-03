@@ -11,6 +11,7 @@ require('./../stylesheets/base.css');
 import AppWrapper from './app/AppWrapper'
 import App from './app/App'
 import DetailsView from './app/DetailsView'
+import SurveyContainer from './app/SurveyContainer'
 import NotFound from './app/404NotFound'
 
 
@@ -25,6 +26,9 @@ render(
       <Route path='list' component={(props) => (<App {...props}/>)}>
         <IndexRoute component={DetailsView} />
         <Route path=':slug' component={DetailsView} />
+      </Route>
+      <Route path='survey' component={(props) => (<App {...props}/>)}>
+        <Route path=':hash' component={SurveyContainer} />
       </Route>
       <Route path='*' component={NotFound}/>
     </Route>

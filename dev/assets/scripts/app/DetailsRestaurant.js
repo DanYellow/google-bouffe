@@ -63,7 +63,8 @@ export default class DetailsRestaurant extends React.Component {
     super(props);
 
     this.state = {
-      displayItinary: false
+      displayItinary: false,
+      isInMySurvey: false
     }
   }
 
@@ -73,10 +74,33 @@ export default class DetailsRestaurant extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     document.title = `🍽 Google Bouffe - ${nextProps.restaurant.title}`;
+
+    let answers = window.localStorage.getItem('survey_anwsers');
+    this.setState({ isInMySurvey: answers.includes(nextProps.restaurant.title) });
   }
 
   toggleDisplay() {
-    this.setState({displayItinary: !this.state.displayItinary})
+    this.setState({displayItinary: !this.state.displayItinary});
+  }
+
+  togglePresenceInSurvey() {
+    let answers = JSON.parse(window.localStorage.getItem('survey_anwsers')) || []
+    let { title, slug } = this.props.restaurant;
+
+    if (this.state.isInMySurvey) {
+      answers = answers.filter((restaurant) =>
+        restaurant.title !== title
+      );
+    } else {
+      answers.push({
+        'title': title,
+        'url': `/#/list/${slug}`
+      });
+    }
+
+    window.localStorage.setItem('survey_anwsers', JSON.stringify(answers));
+
+    this.setState({isInMySurvey: !this.state.isInMySurvey});
   }
 
   render() {
@@ -99,6 +123,7 @@ export default class DetailsRestaurant extends React.Component {
         <header>
           <h1 className={styles.title}>{this.props.restaurant.title}</h1>
           <p itemProp="streetAddress" className={styles.address}><span style={{ fontFamily: "'open_sanssemibold', Arial, sans-serif" }}>Adresse : </span>{this.props.restaurant.address}</p>
+          <button type="action" onClick={() => this.togglePresenceInSurvey()}> { this.state.isInMySurvey ? "Retirer de mon sondage" : "Ajouter à mon sondage" }</button>
         </header>
         <div className={[styles.details, (this.state.displayItinary) ? styles.hide : null].join(' ')}>
           <blockquote itemProp="description" className={styles.description}>{ description }</blockquote>

@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 
 
-export default class Header extends React.Component {
+export default class SurveyContainer extends React.Component {
 
   render() {
     return (

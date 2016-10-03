@@ -228,11 +228,10 @@ export default class App extends React.Component {
       travelMode: google.maps.TravelMode.WALKING
     }, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-        self.setState({ 
-          currentRestaurantItinerary: response.routes[0].legs[0].steps,
-          currentRestaurantDirections: response
-        })
-        console.log("rerer", self.state)
+        // self.setState({ 
+        //   currentRestaurantItinerary: response.routes[0].legs[0].steps,
+        //   currentRestaurantDirections: response
+        // })
       } else {
         window.alert('Directions request failed due to ' + status);
       }
