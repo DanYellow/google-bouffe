@@ -27,8 +27,11 @@ render(
         <IndexRoute component={DetailsView} />
         <Route path=':slug' component={DetailsView} />
       </Route>
-      <Route path='survey' component={(props) => (<App {...props}/>)}>
-        <Route path=':hash' component={SurveyContainer} />
+      <Route path='survey' component={(props) => (<SurveyContainer {...props}/>)}>
+        <Route path=':hash' />
+      </Route>
+      <Route path='survey/results' component={(props) => (<SurveyContainer {...props}/>)}>
+        <Route path=':hash' />
       </Route>
       <Route path='*' component={NotFound}/>
     </Route>

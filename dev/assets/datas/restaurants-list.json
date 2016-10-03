@@ -4,7 +4,7 @@
       "lat": 48.850861,
       "lng": 2.377926
     },
-    "title": "East mamma 🇮🇹",
+    "title": "East mamma",
     "props": {
       "description": "Restaurant Italien. Produits de qualité pour des plats de qualité.",
       "address": "33 Rue du Faubourg Saint-Antoine, 75011 Paris",
@@ -40,7 +40,7 @@
       "lat": 48.853131,
       "lng": 2.376798
     },
-    "title": "Starvin Joe 🍔",
+    "title": "Starvin Joe",
     "props": {
       "description": "Mar1 y est déjà allé genre trois fois. On peut dire que c'est un bon burger.",
       "address": "42 Rue de Charonne, 75011 Paris",
@@ -143,7 +143,7 @@
       "lat": 48.853097,
       "lng": 2.378275
     },
-    "title": "Le Chalet Savoyard 🇨🇭",
+    "title": "Le Chalet Savoyard",
     "props": {
       "description": "Raclette Suisse.",
       "address": "58 Rue de Charonne, 75011 Paris",
@@ -321,6 +321,4 @@
       "budgetScale": 5
     }
   }
-
-  
 ]

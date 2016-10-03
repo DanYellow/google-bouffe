@@ -1,5 +1,6 @@
 .list {
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   flex: 1;
 }
 

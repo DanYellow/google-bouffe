@@ -1,8 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-// https://davidwalsh.name/css-flip
-
 module.exports = {
   devtool: 'source-map',
   node: {

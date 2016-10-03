@@ -75,7 +75,7 @@ export default class DetailsRestaurant extends React.Component {
   componentWillReceiveProps(nextProps) {
     document.title = `🍽 Google Bouffe - ${nextProps.restaurant.title}`;
 
-    let answers = window.localStorage.getItem('survey_anwsers');
+    let answers = window.localStorage.getItem('survey_anwsers') || '';
     this.setState({ isInMySurvey: answers.includes(nextProps.restaurant.title) });
   }
 
@@ -84,7 +84,7 @@ export default class DetailsRestaurant extends React.Component {
   }
 
   togglePresenceInSurvey() {
-    let answers = JSON.parse(window.localStorage.getItem('survey_anwsers')) || []
+    let answers = JSON.parse(window.localStorage.getItem('survey_anwsers')) || [];
     let { title, slug } = this.props.restaurant;
 
     if (this.state.isInMySurvey) {

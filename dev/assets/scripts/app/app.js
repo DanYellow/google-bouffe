@@ -10,6 +10,8 @@ import Utils from './Utils'
 
 import styles from './../../stylesheets/map.css'
 
+window.boBaseURL = 'http://127.0.0.1:8000';
+window.baseURL = 'http://127.0.0.1:9009/#';
 
 window.tagsRef = {
   '1': {

@@ -4,8 +4,7 @@ import React from 'react';
 
 import Header from './Header'
 import Footer from './Footer'
-import App from './App'
-import Menu from './Menu'
+
 
 import styles from './../../stylesheets/map.css'
 

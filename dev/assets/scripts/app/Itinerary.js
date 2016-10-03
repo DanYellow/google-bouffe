@@ -6,7 +6,6 @@ import _ from 'lodash'
 import styles from './../../stylesheets/itinerary.css'
 
 
-
 export default class ItineraryContainer extends React.Component {
   render() {
     return (

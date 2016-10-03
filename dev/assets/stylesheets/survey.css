@@ -1,0 +1,32 @@
+.survey {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.survey h1 {
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  font-size: 30px;
+  color: #333333;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'open_sansregular', Arial, sans-serif;
+  font-size: 16px;
+  padding-left: 25px;
+}
+
+.answers article {
+  margin-bottom: 9px;
+  display: flex;
+  flex-direction: column;
+}
+
+.voted {
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  font-size: 30px;
+  color: #00b21f;
+}
