@@ -1,0 +1,27 @@
+.reset {
+  background: none;
+  border: 0;
+  color: inherit;
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}
+
+.cta {
+  padding: 3px 5px;
+  border: 2px solid #da032c;
+  margin: 5px 0;
+  font-size: 14px;
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  color: #da032c;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.cta:hover {
+  background-color: #da032c;
+  color: white;
+}

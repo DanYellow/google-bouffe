@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.form fieldset {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+
+.form fieldset label {
+  font-size: 24px;
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  margin-bottom: 5px;
+}
+
+.form fieldset input {
+  padding: 5px;
+}
+
+.form legend {
+  font-size: 34px;
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
