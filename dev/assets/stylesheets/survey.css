@@ -16,17 +16,36 @@
 
   font-family: 'open_sansregular', Arial, sans-serif;
   font-size: 16px;
-  padding-left: 25px;
+  padding-left: 10px;
+  margin-left: 15px;
+  border-left: 2px solid #da032c;
 }
 
 .answers article {
-  margin-bottom: 9px;
+  margin-bottom: 17px;
   display: flex;
   flex-direction: column;
+}
+
+.answers article:last-child {
+  margin-bottom: 0;
 }
 
 .voted {
   font-family: 'open_sanssemibold', Arial, sans-serif;
   font-size: 30px;
   color: #00b21f;
+}
+
+
+.survey-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.survey-error h1 {
+  font-family: 'open_sanssemibold', Arial, sans-serif;
+  font-size: 30px;
+  color: #da032c;
 }

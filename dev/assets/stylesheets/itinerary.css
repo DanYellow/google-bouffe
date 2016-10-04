@@ -1,6 +1,6 @@
 .itinerary-container {
   overflow: auto;
-  height: 325px;
+  max-height: 275px;
   -webkit-overflow-scrolling: touch;
 }
 

@@ -10,8 +10,11 @@ import Utils from './Utils'
 
 import styles from './../../stylesheets/map.css'
 
-window.boBaseURL = 'http://127.0.0.1:8000';
-window.baseURL = 'http://127.0.0.1:9009/#';
+// const host = '10.224.70.237';
+const host = '127.0.0.1';
+
+window.boBaseURL = `http://${host}:8000`;
+window.baseURL = `http://${host}:9009/#`;
 
 window.tagsRef = {
   '1': {
@@ -230,10 +233,10 @@ export default class App extends React.Component {
       travelMode: google.maps.TravelMode.WALKING
     }, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-        // self.setState({ 
-        //   currentRestaurantItinerary: response.routes[0].legs[0].steps,
-        //   currentRestaurantDirections: response
-        // })
+        self.setState({ 
+          currentRestaurantItinerary: response.routes[0].legs[0].steps,
+          currentRestaurantDirections: response
+        })
       } else {
         window.alert('Directions request failed due to ' + status);
       }

@@ -21,7 +21,6 @@ export default class Map extends React.Component {
       clickableIcons: false,
       mapTypeControl: false,
 
-
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE
       },
@@ -99,7 +98,6 @@ export default class Map extends React.Component {
   }
 
   render() {
-    console.log("render")
     return (
       <GoogleMapLoader
         containerElement={

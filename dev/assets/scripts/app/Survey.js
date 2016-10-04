@@ -4,6 +4,7 @@ import uuid from 'node-uuid';
 
 import _ from 'lodash';
 
+import button from './../../stylesheets/button.css'
 import styles from './../../stylesheets/survey.css'
 
 
@@ -35,13 +36,14 @@ export default class Survey extends React.Component {
       )
   }
 
+
   cheat () {
     this.setState({ voteMessage: undefined, cheatCount: this.state.cheatCount + 1 });
   }
 
 
   render() {
-
+    console.log('regerger')
     let content = (
       <div className={styles.survey}>
         <h1>{this.props.question || 'Ce midi, on se fait quoi ?'}</h1>
@@ -57,7 +59,7 @@ export default class Survey extends React.Component {
       content = (
         <div>
           <h1 className={styles.voted}>{this.state.voteMessage}</h1>
-          <button onClick={() => this.cheat()}>{'Re-'.repeat(this.state.cheatCount)}Truquer les votes</button>
+          <button className={[button.reset, button.cta].join(' ')} onClick={() => this.cheat()}>{'Re-'.repeat(this.state.cheatCount)}Truquer les votes</button>
         </div>
       );
     }
@@ -65,7 +67,7 @@ export default class Survey extends React.Component {
     return (
       <div>
         { content }
-        </div>
+      </div>
     )
   }
 }
@@ -87,10 +89,21 @@ class Answer extends React.Component {
 
     return (
       <article>
-        <p>{ response }</p>
-        <a href={URL} target="_blank">Voir fiche</a>
-        <button data-voteurl={voteURL} onClick={(e) => this.voteClick(e)}>Je vote pour !</button>
+        <p style={stylesAnswer.response}>{ response }</p>
+        <a style={stylesAnswer.url} href={URL} target="_blank">Voir fiche</a>
+        <button className={[button.reset, button.cta].join(' ')} data-voteurl={voteURL} onClick={(e) => this.voteClick(e)}>Je vote pour !</button>
       </article>
     );
+  }
+}
+
+const stylesAnswer = {
+  url: {
+    color: '#da032c'
+  },
+  response: {
+    fontSize: '22px',
+    fontFamily: "'open_sansregular', Arial, sans-serif",
+    marginBottom: '7px'
   }
 }

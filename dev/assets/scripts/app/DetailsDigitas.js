@@ -14,6 +14,7 @@ export default class DetailsDigitas extends React.Component {
       'du numérique', 'du digital',
       'de la direction par de la donnée utilisateur', 'du kimchi',
       'un gif audio', 'une image sonore',
+      'un Pokémon', 'un curcurbitacée',
     ];
 
     this.FLIPGIFS = [

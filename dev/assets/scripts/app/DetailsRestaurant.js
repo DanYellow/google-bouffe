@@ -4,6 +4,7 @@ import React from 'react';
 import ItineraryContainer, { ItinerarySummary } from './Itinerary'
 
 import styles from './../../stylesheets/details-view.css'
+import button from './../../stylesheets/button.css'
 
 class BudgetMeter extends React.Component {
   static defaultProps = {
@@ -123,18 +124,24 @@ export default class DetailsRestaurant extends React.Component {
         <header>
           <h1 className={styles.title}>{this.props.restaurant.title}</h1>
           <p itemProp="streetAddress" className={styles.address}><span style={{ fontFamily: "'open_sanssemibold', Arial, sans-serif" }}>Adresse : </span>{this.props.restaurant.address}</p>
-          <button type="action" onClick={() => this.togglePresenceInSurvey()}> { this.state.isInMySurvey ? "Retirer de mon sondage" : "Ajouter à mon sondage" }</button>
+          <button type="action" 
+                  className={[button.reset, button.cta, button.fullwidth].join(' ')} 
+                  onClick={() => this.togglePresenceInSurvey()}> 
+                    { this.state.isInMySurvey ? "(-) Retirer de mon sondage" : "(+) Ajouter à mon sondage" }
+          </button>
         </header>
         <div className={[styles.details, (this.state.displayItinary) ? styles.hide : null].join(' ')}>
           <blockquote itemProp="description" className={styles.description}>{ description }</blockquote>
           { tags }
           <BudgetMeter budgetScale={this.props.restaurant.budgetScale} />
 
-          <button style={{marginTop: 'auto'}} onClick={() => this.toggleDisplay()}>Afficher itinéraire</button>
+          <button style={{marginTop: 'auto'}} className={[button.reset, button.cta, button.fullwidth].join(' ')} onClick={() => this.toggleDisplay()}>Afficher itinéraire</button>
         </div>
 
         <div className={[styles.details, styles.itinerary, (!this.state.displayItinary) ? styles.hide : null].join(' ')}>
-          <button style={{marginTop: '0'}} onClick={() => this.toggleDisplay()}>Cacher itinéraire</button>
+          <button style={{marginTop: '0'}}
+                  className={[button.reset, button.cta, button.fullwidth].join(' ')}
+                  onClick={() => this.toggleDisplay()}>Cacher itinéraire</button>
           <ItineraryContainer datas={this.props.itinerary} />
           <ItinerarySummary datas={this.props.itinerary} />
         </div>

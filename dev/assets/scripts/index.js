@@ -13,6 +13,7 @@ import App from './app/App'
 import DetailsView from './app/DetailsView'
 import SurveyContainer from './app/SurveyContainer'
 import NotFound from './app/404NotFound'
+import SuggestionContainer from './app/SuggestionContainer'
 
 
 render(
@@ -23,16 +24,23 @@ render(
         <IndexRoute component={DetailsView} />
         <Route path=':slug' component={DetailsView} />
       </Route>
+
       <Route path='list' component={(props) => (<App {...props}/>)}>
         <IndexRoute component={DetailsView} />
         <Route path=':slug' component={DetailsView} />
       </Route>
+
       <Route path='survey' component={(props) => (<SurveyContainer {...props}/>)}>
         <Route path=':hash' />
       </Route>
+
       <Route path='survey/results' component={(props) => (<SurveyContainer {...props}/>)}>
         <Route path=':hash' />
       </Route>
+
+      <Route path='suggestion' component={(props) => (<SuggestionContainer {...props}/>)}>
+      </Route>
+      
       <Route path='*' component={NotFound}/>
     </Route>
   </Router>,
