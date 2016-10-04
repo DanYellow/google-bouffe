@@ -11,6 +11,7 @@
   justify-content: center;
   flex-direction: column;
   margin-bottom: 15px;
+  font-family: 'open_sansregular', Arial, sans-serif;
 }
 
 
@@ -22,6 +23,11 @@
 
 .form fieldset input {
   padding: 5px;
+  height: 22px;
+}
+
+.form fieldset textarea {
+  padding: 5px;  
 }
 
 .form legend {
@@ -29,5 +35,6 @@
   font-family: 'open_sanssemibold', Arial, sans-serif;
   text-align: center;
   margin-bottom: 25px;
+  color: #da032c;
 }
 
