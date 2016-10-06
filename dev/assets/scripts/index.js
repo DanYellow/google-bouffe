@@ -31,10 +31,9 @@ render(
       </Route>
 
       <Route path='survey' component={(props) => (<SurveyContainer {...props}/>)}>
-        <Route path=':hash' />
-      </Route>
-
-      <Route path='survey/results' component={(props) => (<SurveyContainer {...props}/>)}>
+        <Route path='results'>
+          <Route path=':hash' />
+        </Route>
         <Route path=':hash' />
       </Route>
 

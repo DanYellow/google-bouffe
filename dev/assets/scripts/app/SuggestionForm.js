@@ -61,7 +61,7 @@ export default class SuggestionContainer extends React.Component {
         <fieldset>
           <button style={{marginTop: 'auto'}}
           type="submit"
-          className={[button.reset, button.cta, button.fullwidth].join(' ')}>Envoyer ma suggestion</button>
+          className={[button.reset, button.cta, button.fullwidth, button.tall].join(' ')}>Envoyer ma suggestion</button>
         </fieldset>
 
       </form>

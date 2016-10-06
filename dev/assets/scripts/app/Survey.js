@@ -26,7 +26,6 @@ export default class Survey extends React.Component {
    * @return null
    */
   vote (url) {
-    // 
     fetch(url, {
         method: 'post'
       })
@@ -43,7 +42,6 @@ export default class Survey extends React.Component {
 
 
   render() {
-    console.log('regerger')
     let content = (
       <div className={styles.survey}>
         <h1>{this.props.question || 'Ce midi, on se fait quoi ?'}</h1>

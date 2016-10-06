@@ -1,20 +1,24 @@
 import 'babel-polyfill';
-import React from 'react';
+import React, {Component} from 'react';
+
+import _ from 'lodash';
 
 import Survey from './Survey'
+import SurveyResults from './SurveyResults'
 
 import styles from './../../stylesheets/survey.css'
 import map from './../../stylesheets/map.css'
 
 
-export default class SurveyContainer extends React.Component {
+export default class SurveyContainer extends Component {
   constructor (props) {
-    super(props)
+    super(props);
 
     this.state = {
       survey: {},
       anErrorOccured: false,
-      dots: 0
+      dots: 0,
+      isResultPage: (this.props.location.pathname.indexOf('results') > -1) ? true : false
     }
 
     this.dotsTimer = setInterval(() => {
@@ -30,7 +34,12 @@ export default class SurveyContainer extends React.Component {
 
   componentDidMount() {
     // Retrieve content survey
-    fetch(`${window.boBaseURL}/survey/${this.props.params.hash}`, {
+    let APIURL = `${window.boBaseURL}/survey/${this.props.params.hash}`;
+    if (this.state.isResultPage) {
+      APIURL = `${window.boBaseURL}/survey/results/${this.props.params.hash}`;
+    }
+    console.log('APIURL', APIURL)
+    fetch(APIURL, {
         mode: 'cors'
       })
       .then(response => response.json())
@@ -43,14 +52,13 @@ export default class SurveyContainer extends React.Component {
         clearTimeout(this.dotsTimer);
       }.bind(this)
       ).catch(function(error) {
-        // console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
         this.setState({ anErrorOccured: true });
         clearTimeout(this.dotsTimer);
       }.bind(this));
   }
 
   _renderPlaceholderView() {
-    let result = (<div>{ 'Pending' + '.'.repeat(this.state.dots) }</div>)
+    let result = (<div>{ 'Chargement' + '.'.repeat(this.state.dots) }</div>)
     if (this.state.anErrorOccured) {
       result = (<div className={styles['survey-error']}>
         <h1>Une erreur est survenue</h1>
@@ -62,16 +70,31 @@ export default class SurveyContainer extends React.Component {
     return result;
   }
 
-  render() {
-      if (!Object.keys(this.state.survey).length) {
-        return this._renderPlaceholderView();
-      }
+  _renderSurvey() {
+    return (<Survey {...this.state.survey} />)
+  }
 
-      return (
-        <section className={map.map}>
-          <Survey {...this.state.survey} />
-        </section>
-      )
+  _renderSurveyResults() {
+    return (<SurveyResults results={this.state.survey} />)
+  }
+
+  render() {
+    console.log('ggergerger')
+    let content = this._renderSurvey();
+    
+    if (this.state.isResultPage) {
+      content = this._renderSurveyResults();
+    }
+
+    if (!Object.keys(this.state.survey).length) {
+      content = this._renderPlaceholderView();
+    }
+    
+    return (
+      <section className={map.map}>
+        { content }
+      </section>
+    )
   }
 }
 

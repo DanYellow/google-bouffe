@@ -1,7 +1,10 @@
 import 'babel-polyfill';
 import React from 'react';
 
-import button from './../../stylesheets/button.css'
+import { Link } from 'react-router';
+
+import button from './../../stylesheets/button.css';
+
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -9,7 +12,7 @@ export default class Header extends React.Component {
 
     this.state = {
       canCreateSurvey: false,
-      urlSurvey: undefined
+      urlSurvey: window.localStorage.getItem('survey_url') || ''
     };
   }
 
@@ -24,13 +27,14 @@ export default class Header extends React.Component {
 
   createSurvey() {
     fetch(`${window.boBaseURL}/survey/create?datas=${encodeURIComponent(window.localStorage.getItem('survey_anwsers'))}`, {
-        method: 'GET',
+        method: 'POST',
       })
       .then(response => response.json())
       .then(function(json) {
-        localStorage.clear();
+        localStorage.clear('survey_anwsers');
         this.setState({ urlSurvey: json.response.url });
-      }.bind(this))
+        window.localStorage.setItem('survey_url', json.response.url);
+      }.bind(this));
   }
 
   render() {
@@ -43,7 +47,7 @@ export default class Header extends React.Component {
 
     if (this.state.urlSurvey) {
       const urlSurveyComplete = `${window.baseURL}${this.state.urlSurvey}`;
-      contentURLSurvey = <p>Lien du dernier sondage : <a href={urlSurveyComplete}>{this.state.urlSurvey}</a></p>
+      contentURLSurvey = <p>Lien du dernier sondage : <Link target="_self" to={"/"}>Retour à l'accueil</Link> <a href={urlSurveyComplete}>{this.state.urlSurvey}</a></p>
     }
 
     return (

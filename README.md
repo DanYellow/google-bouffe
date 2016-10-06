@@ -27,3 +27,4 @@ Generate js prod file : webpack -p --config ./webpack.prod.config.js
 - Add event system
 - Add survey system
 - Display itinerary of restaurant when switch list to map
+- Add url to display result, "securize" to allow only creator to see this url

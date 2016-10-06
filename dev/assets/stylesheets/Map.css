@@ -5,6 +5,8 @@
   height: 500px;
   margin: 0 auto;
   padding: 10px 0;
+  border-top: 2px solid #da032c;
+  border-bottom: 2px solid #da032c;
 }
 
 .hide {

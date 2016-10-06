@@ -21,6 +21,10 @@
   width: 100%;
 }
 
+.tall {
+ padding: 10px 5px;
+}
+
 .cta:hover {
   background-color: #da032c;
   color: white;
