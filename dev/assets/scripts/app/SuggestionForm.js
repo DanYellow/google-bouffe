@@ -3,10 +3,14 @@ import React from 'react';
 
 import styles from './../../stylesheets/form.css';
 import button from './../../stylesheets/button.css';
+import map from './../../stylesheets/map.css';
 
 export default class SuggestionContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      suggestionSubmited: false
+    }
   }
 
   _onSumbit(e) {
@@ -26,19 +30,47 @@ export default class SuggestionContainer extends React.Component {
 
     let queryString = '';
     for (let key in formData) {
+      if (!formData[key]) {
+        continue;
+      }
       queryString += `${key}=${formData[key]}&`;
     }
+
+    queryString = queryString.substring(0, queryString.length - 1);
     
-    fetch(`${window.boBaseURL}/suggestion/create`, {
+    fetch(`${window.boBaseURL}/suggestion/create?${queryString}`, {
         method: 'POST',
-        body: {}
+        body: {},
+        mode: 'cors'
       })
       .then(response => response.json())
       .then(function(json) {
+        // console.log(json)
+        this.setState({ suggestionSubmited: true })
       }.bind(this))
   }
 
   render() {
+    let content = this._renderForm();
+
+    if (this.state.suggestionSubmited) {
+      content = this._renderFormSuccess();
+    }
+
+    return (
+      <section className={map.map}>
+        { content }
+      </section>
+    )
+  }
+
+  _renderFormSuccess () {
+    return (
+      <p> Suggestion enregistrée ! </p>
+    )
+  }
+
+  _renderForm () {
     return (
       <form className={styles.form} name="suggest" onSubmit={(e) => this._onSumbit(e) }>
         <legend>Suggérer un restaurant</legend>
@@ -52,7 +84,7 @@ export default class SuggestionContainer extends React.Component {
         </fieldset>
         <fieldset>
           <label>Adresse</label>
-          <input name='adresse' placeholder='Adresse (rue + code postal)' />
+          <input name='address' placeholder='Adresse (rue + code postal)' />
         </fieldset>
         <fieldset>
           <label>Budget</label>
@@ -63,7 +95,6 @@ export default class SuggestionContainer extends React.Component {
           type="submit"
           className={[button.reset, button.cta, button.fullwidth, button.tall].join(' ')}>Envoyer ma suggestion</button>
         </fieldset>
-
       </form>
     )
   }

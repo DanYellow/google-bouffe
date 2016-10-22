@@ -40,7 +40,6 @@ export default class Survey extends React.Component {
     this.setState({ voteMessage: undefined, cheatCount: this.state.cheatCount + 1 });
   }
 
-
   render() {
     let content = (
       <div className={styles.survey}>

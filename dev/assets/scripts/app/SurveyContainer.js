@@ -38,7 +38,7 @@ export default class SurveyContainer extends Component {
     if (this.state.isResultPage) {
       APIURL = `${window.boBaseURL}/survey/results/${this.props.params.hash}`;
     }
-    console.log('APIURL', APIURL)
+
     fetch(APIURL, {
         mode: 'cors'
       })
@@ -79,7 +79,6 @@ export default class SurveyContainer extends Component {
   }
 
   render() {
-    console.log('ggergerger')
     let content = this._renderSurvey();
     
     if (this.state.isResultPage) {
