@@ -320,5 +320,21 @@
       ],
       "budgetScale": 5
     }
+  },
+  {
+    "position": {
+      "lat": 48.853364,
+      "lng": 2.375627
+    },
+    "title": "Chez Celeste",
+    "props": {
+      "description": "",
+      "address": "29 rue de Charonne, 75011 Paris",
+      "tags": [
+        5
+      ],
+      "budgetScale": 5
+    }
   }
+  
 ]
