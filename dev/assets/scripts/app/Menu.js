@@ -22,7 +22,7 @@ export default class Menu extends React.Component {
     return (
       <nav className={styles.menu}>
         <Link target="_self" to={"/map/" + slugURL} activeStyle={ACTIVE}>Carte</Link>
-        <Link target="_self" to={["/list/" + slugURL, "/list"]} activeStyle={ACTIVE}>Liste</Link>
+        <Link target="_self" to={"/list/" + slugURL} activeStyle={ACTIVE}>Liste</Link>
       </nav>
     )
   }

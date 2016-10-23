@@ -186,6 +186,7 @@ export default class App extends React.Component {
     super(props);
 
     this.directionsService = new google.maps.DirectionsService;
+    this.directionsDisplay = new google.maps.DirectionsRenderer;
 
     this.noResult = false;
 
@@ -204,8 +205,14 @@ export default class App extends React.Component {
     this.getNextRestaurant(nextProps)
   }
 
+  componentWillUpdate () {
+    // console.log(this._mapComponent)
+    // this.directionsDisplay.setMap(this._mapComponent.map);
+    // this.directionsDisplay.setDirections(this.props.directions);
+  }
+
   getNextRestaurant (props) {
-    let slug = props.params.slug;
+    let { slug } = props.params;
     
     let currentRestaurant = props.restaurants.find(getRestaurantForSlug.bind(this, slug));
     if (!currentRestaurant) {
@@ -226,6 +233,7 @@ export default class App extends React.Component {
 
     this.setState({currentRestaurant: currentRestaurant});
 
+    console.log('currentRestaurant', currentRestaurant.position)
     const self = this;
     this.directionsService.route({
       origin: {lat: 48.857927, lng: 2.373118}, // Digitas
@@ -236,7 +244,8 @@ export default class App extends React.Component {
         self.setState({ 
           currentRestaurantItinerary: response.routes[0].legs[0].steps,
           currentRestaurantDirections: response
-        })
+        });
+        self.directionsDisplay.setDirections(response);
       } else {
         window.alert('Directions request failed due to ' + status);
       }
@@ -247,12 +256,20 @@ export default class App extends React.Component {
     restaurants: markers
   }
 
+  handleMapLoad (map) {
+    if (map) {
+      this.directionsDisplay.setMap(map.props.map);
+    }
+  }
 
   render() {
     let ViewDisplay = <ListRestaurants restaurants={this.props.restaurants} />
 
     if (this.props.route.path === 'map') {
-      ViewDisplay = <Map markers={this.props.restaurants} directions={this.state.currentRestaurantDirections} />
+      ViewDisplay = <Map 
+      onMapLoad={this.handleMapLoad.bind(this)}
+      currentRestaurantCoords={ this.props.restaurants.find(getRestaurantForSlug.bind(this, this.props.params.slug)).position
+      } markers={this.props.restaurants} directions={this.state.currentRestaurantDirections} />
     }
 
     return (

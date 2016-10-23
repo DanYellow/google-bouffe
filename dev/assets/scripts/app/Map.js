@@ -8,6 +8,11 @@ import { withRouter } from 'react-router';
 
 import styles from './../../stylesheets/map.css';
 
+const getRestaurantForSlug = function (slug, restaurant) {
+  return restaurant.props.slug === slug;
+}
+
+
 @withRouter
 export default class Map extends React.Component {
   constructor (props) {
@@ -49,23 +54,6 @@ export default class Map extends React.Component {
     this.directionsService = new google.maps.DirectionsService;
   }
 
-  componentDidMount () {
-    console.log("dir", this.props.directions)
-
-  }
-
-  componentWillUpdate () {
-
-    this.directionsDisplay.setMap(this.mapContainer.props.map);
-
-    // this.directionsDisplay.setDirections(this.props.directions);
-  }
-
- 
-
-  componentWillReceiveProps () {
-    // this.directionsDisplay.setDirections(this.props.directions);
-  }
 
   static defaultProps = {
     markers: [],
@@ -77,24 +65,10 @@ export default class Map extends React.Component {
    * Action when a marker is selected
    * @param  {Int} index  Index of Marker selected
    * @param  {Object} marker selected marker's datas
-   * @return {null}
+   * @return null
    */
   selectMarker(index, marker) {
     this.props.router.push(`/map/${marker.props.slug}`);
-
-    const self = this;
-
-    this.directionsService.route({
-      origin: {lat: 48.857927, lng: 2.373118}, // Digitas
-      destination: marker.position, // Restaurant position
-      travelMode: google.maps.TravelMode.WALKING
-    }, function(response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        self.directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
-    });
   }
 
   render() {
@@ -114,7 +88,7 @@ export default class Map extends React.Component {
             defaultCenter={this.props.defaultCenter}
             defaultMapTypeId={google.maps.MapTypeId.ROADMAP}
             defaultOptions={this.mapOptions}
-            ref={(c) => this.mapContainer = c}
+            ref={this.props.onMapLoad}
           >
           
           <Polygon options={{
